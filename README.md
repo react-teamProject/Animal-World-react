@@ -1,4 +1,4 @@
-# React로 TodoList 만들기
+# React 
 ### 2022.12. ~
 - 스파르타코딩클럽 내일배움캠프 React 팀 프로젝트
 <br>
