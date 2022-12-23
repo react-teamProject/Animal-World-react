@@ -1,19 +1,18 @@
 {
   "board": [
     {
-      "id": "",
-      "boardTitle": "",
-      "boardContent": "",
-      "boardPW": "",
-      "boardUser": "",
-      "comment": [
-        {
-          "id": "",
-          "commentContent": "",
-          "commentPW": "",
-          "commentUser": ""
-        }
-      ]
+      "id": "83830e86-a6f4-4fe6-bf6c-31a4abe111be",
+      "user": "hello",
+      "pw": "1234",
+      "title": "test",
+      "content": "test-content"
+    },
+    {
+      "id": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
+      "user": "tess",
+      "pw": "1234",
+      "title": "eee",
+      "content": "eee"
     }
   ]
 }

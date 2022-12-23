@@ -1,10 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <StHeader>
-      <h2>Animal World</h2>
+      <HomeLink
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <h2>Animal World</h2>
+      </HomeLink>
     </StHeader>
   );
 };
@@ -15,4 +24,8 @@ export default Header;
 const StHeader = styled.div`
   font-size: 30px;
   color: blue;
+`;
+
+const HomeLink = styled.div`
+  text-decoration: none;
 `;
