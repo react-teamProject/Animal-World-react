@@ -10,7 +10,7 @@ const initialState = {
 
 // comments 받아오기 (BoardDetail에서 사용)
 export const __getComments = createAsyncThunk(
-  "board/getComments",
+  "comment/getComments",
   async (payload, thunkApi) => {
     try {
       const data = await axios.get("http://localhost:3001/comment");
@@ -23,7 +23,7 @@ export const __getComments = createAsyncThunk(
 
 // comment 추가 (CommentInput에서 사용)
 export const __postComment = createAsyncThunk(
-  "board/postComment",
+  "comment/postComment",
   async (payload, thunkApi) => {
     try {
       const data = await axios.post("http://localhost:3001/comment", payload);
@@ -37,7 +37,7 @@ export const __postComment = createAsyncThunk(
 
 // comment 삭제 (BoardDetail에서 사용)
 export const __deleteComment = createAsyncThunk(
-  "board/deteteComment",
+  "comment/deteteComment",
   async (payload, thunkApi) => {
     try {
       await axios.delete(`http://localhost:3001/comment/${payload}`);

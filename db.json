@@ -32,13 +32,6 @@
     },
     {
       "boardId": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
-      "id": "54658ecb-47b4-49c5-b518-f2d97dc6958c",
-      "user": "hhh",
-      "pw": "hhh",
-      "content": "hhh"
-    },
-    {
-      "boardId": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
       "id": "94afa35c-ffbe-4349-8c84-a8e68a916017",
       "user": "bbb",
       "pw": "bbb",
@@ -57,6 +50,20 @@
       "user": "nnnn",
       "pw": "nnnn",
       "content": "nnn"
+    },
+    {
+      "boardId": "5edfe1f8-6d7f-41d0-b4f9-ec418e8ff6b1",
+      "id": "4dabb11a-c55d-4ed3-8c99-2ce1efba598b",
+      "user": "qqq",
+      "pw": "qqq",
+      "content": "qqq"
+    },
+    {
+      "boardId": "eec12688-dd74-4e3b-b1ba-9221e4a29231",
+      "id": "74925926-c931-49e7-a8d4-80cc7f6884a1",
+      "user": "qqq",
+      "pw": "qqq",
+      "content": "qqq"
     }
   ]
 }

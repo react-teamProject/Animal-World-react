@@ -6,20 +6,27 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __deleteBoards } from "../redux/modules/boardSlice";
 import CommentInput from "../components/features/comment/CommentInput";
+import CommentList from "../components/features/comment/CommentList";
+import { useEffect } from "react";
+import { __getComments } from "../redux/modules/commentSlice";
 
 const Detail = () => {
   const dispatch = useDispatch();
+  const navigator = useNavigate();
   const board = useSelector((state) => state.boardSlice.board);
-
   const param = useParams().id;
 
-  const navigator = useNavigate();
+  //렌더링할 때 댓글리스트 조회
+  useEffect(() => {
+    dispatch(__getComments());
+  }, [dispatch]);
 
   const onDeleteHandler = (id) => {
     dispatch(__deleteBoards(id));
     navigator("/");
   };
 
+  //해당 게시물의 댓글만 불러오도록 filter 하고나서 map
   return (
     <Layout>
       {board
@@ -35,8 +42,7 @@ const Detail = () => {
           );
         })}
       <CommentInput param={param} />
-      <div>댓글 입력</div>
-      <div>댓글 리스트</div>
+      <CommentList param={param} />
     </Layout>
   );
 };
