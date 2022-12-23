@@ -1,19 +1,19 @@
 {
-  "posts": [
+  "board": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": "",
+      "boardTitle": "",
+      "boardContent": "",
+      "boardPW": "",
+      "boardUser": "",
+      "comment": [
+        {
+          "id": "",
+          "commentContent": "",
+          "commentPW": "",
+          "commentUser": ""
+        }
+      ]
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
