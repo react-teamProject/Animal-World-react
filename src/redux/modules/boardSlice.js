@@ -60,9 +60,7 @@ export const __editBoards = createAsyncThunk(
   "board/editBoards",
   async (payload, thunkApi) => {
     try {
-      const id = payload[0];
-      const newBoard = payload[1];
-      await axios.patch(`http://localhost:3001/board/${id}`, newBoard);
+      await axios.patch(`http://localhost:3001/board/${payload.id}`, payload);
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -118,13 +116,14 @@ const boardSlice = createSlice({
       state.isLoading = true;
     },
     [__editBoards.fulfilled]: (state, action) => {
+      const { id, title, content } = action.payload;
       state.isLoading = false;
       state.board = state.board.map((item) =>
-        item.id === action.payload[0]
+        item.id === id
           ? {
               ...item,
-              title: action.payload[1].title,
-              content: action.payload[1].content,
+              title: title,
+              content: content,
             }
           : item
       );

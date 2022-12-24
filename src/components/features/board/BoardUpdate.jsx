@@ -4,27 +4,22 @@ import { useDispatch } from "react-redux";
 import { __editBoards } from "../../../redux/modules/boardSlice";
 
 const BoardInput = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
   const param = useParams().id;
   const dispatch = useDispatch();
   const navigator = useNavigate();
 
-  // title change
-  const onTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  // content change
-  const onContentChange = (e) => {
-    setContent(e.target.value);
-  };
+  const [state, setState] = useState({
+    id: param,
+    title: "",
+    content: "",
+  });
 
   // onsubmitHandler
   const onSubmitHandler = (e) => {
     // 새로고침 방지
     e.preventDefault();
+
+    const { title, content } = state;
 
     // 입력칸 공백 방지
     if (!title || !content) {
@@ -33,18 +28,20 @@ const BoardInput = () => {
     }
 
     const newBoard = {
+      id: param,
       title: title,
       content: content,
     };
 
-    const newArr = [param, newBoard];
-
-    dispatch(__editBoards(newArr));
-    setTitle("");
-    setContent("");
+    dispatch(__editBoards(newBoard));
 
     alert("수정했습니다!");
     // navigator("/");
+    setState({
+      id: param,
+      title: "",
+      content: "",
+    });
   };
 
   return (
@@ -53,14 +50,20 @@ const BoardInput = () => {
         <input
           type="text"
           id="title"
-          value={title}
-          onChange={onTitleChange}
+          value={state.title}
+          onChange={(e) => {
+            const { id, value } = e.target;
+            setState({ ...state, [id]: value });
+          }}
           placeholder="제목을 입력해주세요"
         />
         <textarea
           id="content"
-          value={content}
-          onChange={onContentChange}
+          value={state.content}
+          onChange={(e) => {
+            const { id, value } = e.target;
+            setState({ ...state, [id]: value });
+          }}
           placeholder="내용을 입력해주세요"
         />
         <button>수정하기</button>
