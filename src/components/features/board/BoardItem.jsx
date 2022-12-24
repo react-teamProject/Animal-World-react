@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { __deleteBoards } from "../../../redux/modules/boardSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 

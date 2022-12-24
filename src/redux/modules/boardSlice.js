@@ -47,7 +47,22 @@ export const __deleteBoards = createAsyncThunk(
   "board/deteteBoards",
   async (payload, thunkApi) => {
     try {
-      await axios.delete(`http://localhost:3001/board/${payload}`);
+      await axios.delete(`http://localhost:3001/board/${payload}`, payload);
+      return thunkApi.fulfillWithValue(payload);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
+// board 수정
+export const __editBoards = createAsyncThunk(
+  "board/editBoards",
+  async (payload, thunkApi) => {
+    try {
+      const id = payload[0];
+      const newBoard = payload[1];
+      await axios.patch(`http://localhost:3001/board/${id}`, newBoard);
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -59,15 +74,11 @@ const boardSlice = createSlice({
   name: "boardSlice",
   initialState,
   reducers: {
-    // id 값 받아오기
-    getBoardID: (state, action) => {
-      return {
-        ...state,
-        board: state.board.find((board) => {
-          return board.id === action.payload;
-        }),
-      };
-    },
+    // editBoard: (state, { payload: id, content }) => {
+    //   state.board = state.board.map((item) =>
+    //     item.id === id ? { ...item, content: content } : item
+    //   );
+    // },
   },
   extraReducers: {
     [__getBoards.pending]: (state) => {
@@ -103,8 +114,21 @@ const boardSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    [__editBoards.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__editBoards.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.board = state.board.map((item) =>
+        item.id === action.payload.id ? action.payload : state.board
+      );
+    },
+    [__editBoards.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
-export const { getBoardID } = boardSlice.actions;
+//export const { editBoard } = boardSlice.actions;
 export default boardSlice.reducer;

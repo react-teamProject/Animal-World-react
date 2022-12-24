@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Layout from "../components/UI/Layout";
 import { __deleteBoards } from "../redux/modules/boardSlice";
 import { useNavigate } from "react-router-dom";
-// import BoardItem from "../components/features/board/BoardItem";
+import BoardUpdate from "../components/features/board/BoardUpdate";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -31,6 +31,8 @@ const Detail = () => {
             </div>
           );
         })}
+      <BoardUpdate />
+      <div>새로고침?</div>
     </Layout>
   );
 };
