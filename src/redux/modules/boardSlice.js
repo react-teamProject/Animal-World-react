@@ -10,6 +10,7 @@ const initialState = {
       pw: "",
       boardTitle: "",
       boardContent: "",
+      ImgUrl: "",
     },
   ],
   isLoading: false,
