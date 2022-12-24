@@ -44,7 +44,7 @@ const BoardInput = () => {
     setContent("");
 
     alert("수정했습니다!");
-    navigator("/");
+    // navigator("/");
   };
 
   return (

@@ -120,7 +120,13 @@ const boardSlice = createSlice({
     [__editBoards.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.board = state.board.map((item) =>
-        item.id === action.payload.id ? action.payload : state.board
+        item.id === action.payload[0]
+          ? {
+              ...item,
+              title: action.payload[1].title,
+              content: action.payload[1].content,
+            }
+          : item
       );
     },
     [__editBoards.rejected]: (state, action) => {
