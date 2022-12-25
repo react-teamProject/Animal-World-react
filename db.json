@@ -35,14 +35,15 @@
       "id": "94afa35c-ffbe-4349-8c84-a8e68a916017",
       "user": "bbb",
       "pw": "bbb",
-      "content": "bbb"
+      "content": "33333",
+      "comment": "111111"
     },
     {
       "boardId": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
       "id": "8450ed34-039f-47a2-8c06-bc2795ad6ca7",
       "user": "kkk",
       "pw": "kkk",
-      "content": "kkk"
+      "content": "777777"
     },
     {
       "boardId": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
@@ -63,7 +64,7 @@
       "id": "74925926-c931-49e7-a8d4-80cc7f6884a1",
       "user": "qqq",
       "pw": "qqq",
-      "content": "qqq"
+      "content": "mmmm"
     }
   ]
 }

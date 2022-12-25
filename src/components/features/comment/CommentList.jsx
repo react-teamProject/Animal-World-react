@@ -4,6 +4,7 @@ import CommentItem from "./CommentItem";
 
 const CommentList = ({ param }) => {
   const comment = useSelector((state) => state.commentSlice.comment);
+  console.log(comment);
 
   // commentItem에 넣었더니 filter에서 걸려서 안 불러와진다.
   const { isLoading, error } = useSelector((state) => state.commentSlice);

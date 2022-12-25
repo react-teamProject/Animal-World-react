@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Layout from "../components/UI/Layout";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { __deleteBoards } from "../redux/modules/boardSlice";
+import { __deleteBoards, __getBoards } from "../redux/modules/boardSlice";
 import CommentInput from "../components/features/comment/CommentInput";
 import CommentList from "../components/features/comment/CommentList";
 import { useEffect } from "react";
@@ -18,6 +18,7 @@ const Detail = () => {
 
   //렌더링할 때 댓글리스트 조회
   useEffect(() => {
+    dispatch(__getBoards());
     dispatch(__getComments());
   }, [dispatch]);
 

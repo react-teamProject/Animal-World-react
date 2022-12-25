@@ -37,10 +37,22 @@ export const __postComment = createAsyncThunk(
 
 // comment 삭제 (BoardDetail에서 사용)
 export const __deleteComment = createAsyncThunk(
-  "comment/deteteComment",
+  "comment/deleteComment",
   async (payload, thunkApi) => {
     try {
       await axios.delete(`http://localhost:3001/comment/${payload}`);
+      return thunkApi.fulfillWithValue(payload);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
+export const __editComment = createAsyncThunk(
+  "comment/editComment",
+  async (payload, thunkApi) => {
+    try {
+      await axios.patch(`http://localhost:3001/comment/${payload.id}`, payload);
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -83,6 +95,25 @@ const commentSlice = createSlice({
       state.comment = state.comment.filter((del) => del.id !== action.payload);
     },
     [__deleteComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [__editComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__editComment.fulfilled]: (state, action) => {
+      const { id, content } = action.payload;
+      state.isLoading = false;
+      state.comment = state.comment.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              content: content,
+            }
+          : item
+      );
+    },
+    [__editComment.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
