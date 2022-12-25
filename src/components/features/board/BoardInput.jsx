@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { __postBoards } from "../../../redux/modules/boardSlice";
 import { useNavigate } from "react-router-dom";
-// 다경 수정작업중
 import { storage } from "../../../firebase";
-import {
-  ref,
-  uploadString,
-  getDownloadURL,
-  connectStorageEmulator,
-} from "firebase/storage";
+import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import styled from "styled-components";
 const BoardInput = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [user, setUser] = useState("");
   const [pw, setPW] = useState("");
+  //------------------------------------
+  // fireURL는 state를 만들어주기
+  const [fireURL, setFireURL] = useState("");
+  //------------------------------------
+  // useEffect를 사용해서 최초 uploadImg를 실행해준다.
+  useEffect(() => {
+    uploadImg();
+  }, []);
+  //------------------------------------
 
   const dispatch = useDispatch();
   const navigator = useNavigate();
@@ -41,7 +44,6 @@ const BoardInput = () => {
   };
 
   // onsubmitHandler
-
   const onSubmitHandler = (e) => {
     // 새로고침 방지
     e.preventDefault();
@@ -52,39 +54,39 @@ const BoardInput = () => {
       return;
     }
 
-    // ---------------🐥🐥다경작업🐥🐥-------------------------
-    const imgRef = ref(storage, `images/${uuidv4()}`);
-    const imgDataUrl = localStorage.getItem("imgDataUrl");
-    let downloadUrl;
-    // let arr = [];
-    const a = "";
-
-    if (imgDataUrl) {
-      uploadString(imgRef, imgDataUrl, "data_url")
-        .then((response) => {
-          downloadUrl = getDownloadURL(response.ref).then((response) => {
-            console.log("response : ", response);
-            a = response;
-            console.log("response : ", response);
-          });
-        })
-        .catch((error) => {
-          console.log("error", error);
-        });
-    }
+    // ----- 이미지url 가져오기 바뀐 부분 ------
+    uploadImg();
 
     // ---------------🐥🐥다경작업🐥🐥-------------------------
+    // const imgRef = ref(storage, `images/${uuidv4()}`);
+    // const imgDataUrl = localStorage.getItem("imgDataUrl");
+    // let downloadUrl;
+
+    // if (imgDataUrl) {
+    //   uploadString(imgRef, imgDataUrl, "data_url")
+    //     .then((response) => {
+    //       downloadUrl = getDownloadURL(response.ref).then((response) => {
+    //         console.log("response : ", response);
+    //         setFireURL(response);
+    //       });
+    //     })
+    //     .catch((error) => {
+    //       console.log("error", error);
+    //     });
+    // }
+    // --------------------------------
     const newBoard = {
       id: uuidv4(),
       user: user,
       pw: pw,
       title: title,
       content: content,
-      ImgUrl: a,
+      // ImgUrl 추가
+      ImgUrl: fireURL,
     };
 
     console.log("newBoard:", newBoard);
-    console.log("a : ", a);
+    console.log("fireURL:", fireURL);
 
     dispatch(__postBoards(newBoard));
 
@@ -95,6 +97,27 @@ const BoardInput = () => {
     navigator("/");
   };
 
+  //-----------------------------------------------------
+  // uploadImg : 사진 추가 메소드
+  const uploadImg = () => {
+    const imgRef = ref(storage, `images/${uuidv4()}`);
+    const imgDataUrl = localStorage.getItem("imgDataUrl");
+    let downloadUrl;
+    if (imgDataUrl) {
+      uploadString(imgRef, imgDataUrl, "data_url")
+        .then((response) => {
+          downloadUrl = getDownloadURL(response.ref).then((response) => {
+            setFireURL(response);
+            console.log("FireURL : ", fireURL);
+          });
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    }
+  };
+  //----------------------------------------
+  // onFileChange : 사진 업로드 (사진의 onChange이벤트 )
   const onFileChange = (event) => {
     const theFile = event.target.files[0];
     const reader = new FileReader();
@@ -107,7 +130,6 @@ const BoardInput = () => {
     };
   };
 
-  // ---------------🐥🐥다경작업🐥🐥-------------------------
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
@@ -140,13 +162,11 @@ const BoardInput = () => {
         />
         <div id="imgUrl"></div>
         <button>글 등록하기</button>
-        {/* // ---------------🐥🐥다경작업🐥🐥------------------------- */}
+        {/* // --------------------------------- */}
         <ImgBox src="/image.jpg" id="boardImg" alt="boardImg" />
         <input type="file" onChange={onFileChange} />
-        {/* // ---------------🐥🐥다경작업🐥🐥------------------------- */}
+        {/* // ---------------------------------- */}
       </form>
-      <hr />
-      <h3>이미지 리스트</h3>
     </div>
   );
 };

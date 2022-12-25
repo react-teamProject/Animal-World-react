@@ -20,10 +20,7 @@ const BoardItem = ({ board }) => {
         <h3>{board.title}</h3>
         <p>{board.user}</p>
         <p>{board.content}</p>
-        <ImgTag
-          src="https://firebasestorage.googleapis.com/v0/b/palpalhajo.appspot.com/o/images%2F30f68189-fb3f-4017-983a-6e71a4402291?alt=media&token=c2234fc3-7f8f-4115-a9e6-91b366c0c9a3"
-          alt="boardImg"
-        />
+        <ImgTag src={board.ImgUrl} alt="boardImg" />
       </DetailLink>
     </div>
   );
