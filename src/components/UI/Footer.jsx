@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <StFooter>
-      <span>copyright @ 팔팔하정</span>
+      <span>copyright 팔팔하정</span>
     </StFooter>
   );
 };

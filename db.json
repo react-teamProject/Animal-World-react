@@ -8,13 +8,6 @@
       "content": "eee"
     },
     {
-      "id": "5edfe1f8-6d7f-41d0-b4f9-ec418e8ff6b1",
-      "user": "aaaa",
-      "pw": "1111",
-      "title": "2222",
-      "content": "222"
-    },
-    {
       "id": "eec12688-dd74-4e3b-b1ba-9221e4a29231",
       "user": "aaaa",
       "pw": "aaa",
@@ -58,6 +51,20 @@
       "user": "qqq",
       "pw": "qqq",
       "content": "qqq"
+    },
+    {
+      "boardId": "5edfe1f8-6d7f-41d0-b4f9-ec418e8ff6b1",
+      "id": "5855669f-e1b0-479d-890e-be1bb71dcddd",
+      "user": "asdf",
+      "pw": "adsf",
+      "content": "asdf"
+    },
+    {
+      "boardId": "5edfe1f8-6d7f-41d0-b4f9-ec418e8ff6b1",
+      "id": "f52aa0a8-edd7-40f0-87be-eed28bfcb303",
+      "user": "asdf",
+      "pw": "aaaa",
+      "content": "aaaa"
     }
   ]
 }

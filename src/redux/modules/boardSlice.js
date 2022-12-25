@@ -21,7 +21,7 @@ export const __getBoards = createAsyncThunk(
   "board/getBoards",
   async (payload, thunkApi) => {
     try {
-      const data = await axios.get("http://localhost:3001/board");
+      const data = await axios.get("http://localhost:3003/board");
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -34,7 +34,7 @@ export const __postBoards = createAsyncThunk(
   "board/postBoards",
   async (payload, thunkApi) => {
     try {
-      const data = await axios.post("http://localhost:3001/board", payload);
+      const data = await axios.post("http://localhost:3003/board", payload);
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -47,7 +47,7 @@ export const __deleteBoards = createAsyncThunk(
   "board/deteteBoards",
   async (payload, thunkApi) => {
     try {
-      await axios.delete(`http://localhost:3001/board/${payload}`);
+      await axios.delete(`http://localhost:3003/board/${payload}`);
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
