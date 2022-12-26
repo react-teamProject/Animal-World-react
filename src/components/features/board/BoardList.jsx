@@ -9,9 +9,12 @@ const BoardList = () => {
   return (
     <div key={board}>
       <Container>
-        {board.map((item) => {
-          return <BoardItem key={item.id} board={item} />;
-        })}
+        {board
+          .map((item) => {
+            return <BoardItem key={item.id} board={item} />;
+          })
+          .sort((a, b) => a.time - b.time)
+          .reverse()}
       </Container>
     </div>
   );
