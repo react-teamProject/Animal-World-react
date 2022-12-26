@@ -10,6 +10,7 @@ const CommentInput = ({ param }) => {
     user: "",
     pw: "",
     content: "",
+    time: "",
   });
 
   const userInput = useRef();
@@ -49,6 +50,7 @@ const CommentInput = ({ param }) => {
       user: user,
       pw: pw,
       content: content,
+      time: new Date().toLocaleString(),
     };
 
     dispatch(__postComment(newComment));
@@ -60,6 +62,7 @@ const CommentInput = ({ param }) => {
       user: "",
       pw: "",
       content: "",
+      time: "",
     });
   };
 

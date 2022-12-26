@@ -22,7 +22,9 @@ const CommentList = ({ param }) => {
           .filter((item) => item.boardId === param)
           .map((item) => {
             return <CommentItem key={item.id} comment={item} />;
-          })}
+          })
+          .sort((a, b) => a.time - b.time)
+          .reverse()}
       </div>
     </div>
   );

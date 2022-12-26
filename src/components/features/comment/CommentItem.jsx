@@ -5,7 +5,7 @@ import {
   __editComment,
 } from "../../../redux/modules/commentSlice";
 const CommentItem = ({ comment }) => {
-  const { id, user, content, pw } = comment;
+  const { id, user, content, pw, time } = comment;
   const dispatch = useDispatch();
 
   // 댓글 삭제 handler, 비밀번호 확인 후 삭제
@@ -63,6 +63,7 @@ const CommentItem = ({ comment }) => {
         onChange={(e) => setCommentContent(e.target.value)}
       />
       <p>임시 비번: {pw}</p>
+      <p>{time}</p>
 
       <div style={{ display: showDelete && showEdit ? "block" : "none" }}>
         <button onClick={toggledeleteInput}>삭제</button>

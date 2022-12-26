@@ -13,7 +13,9 @@ export const __getComments = createAsyncThunk(
   "comment/getComments",
   async (payload, thunkApi) => {
     try {
-      const data = await axios.get("http://localhost:3001/comment");
+      const data = await axios.get(
+        "http://localhost:3001/comment?_sort=time&_order=asc"
+      );
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -27,7 +29,6 @@ export const __postComment = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const data = await axios.post("http://localhost:3001/comment", payload);
-      console.log(payload);
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
