@@ -1,31 +1,52 @@
 import React from "react";
+
 import styled from "styled-components";
-// import styled from "styled-components";
 
 const MainLayout = () => {
   return (
-    <MainWrapper>
-      <LeftBox>
-        <div className="left-dot-box">
-          <div className="side-content">
-            <div></div>
+    <>
+      <MainWrapper>
+        <LeftBox>
+          <div className="left-dot-box">
+            <div className="side-content">
+              <div></div>
+            </div>
           </div>
-        </div>
-      </LeftBox>
-      <RightBox>
-        <div className="right-dot-box">
-          <div className="title">
-            <div>https://www.animalworld.com/88</div>
+        </LeftBox>
+        <RightBox>
+          <div className="right-dot-box">
+            <div className="title">
+              <div>https://www.animalworld.com/88</div>
+            </div>
+            <div className="main-content"></div>
           </div>
-          <div className="main-content"></div>
-        </div>
-      </RightBox>
-    </MainWrapper>
+        </RightBox>
+        <MenuWrapper>
+          <Menu>홈</Menu>
+          <Menu>글쓰기</Menu>
+        </MenuWrapper>
+      </MainWrapper>
+    </>
   );
 };
-
-export default MainLayout;
-
+const MenuWrapper = styled.div`
+  display: flex;
+  position: relative;
+  right: 74px;
+  flex-direction: column;
+`;
+const Menu = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #f0f8ff;
+  flex-direction: column;
+  border-radius: 0 8px 8px 0;
+  width: 80px;
+  height: 50px;
+  margin: 10px;
+`;
 const MainWrapper = styled.section`
   display: flex;
   flex-direction: row;
@@ -99,3 +120,4 @@ const RightBox = styled.div`
     margin-bottom: 10px;
   }
 `;
+export default MainLayout;
