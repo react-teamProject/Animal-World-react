@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../components/UI/Layout";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { __deleteBoards, __getBoards } from "../redux/modules/boardSlice";
+import { __getBoards } from "../redux/modules/boardSlice";
 import CommentInput from "../components/features/comment/CommentInput";
 import CommentList from "../components/features/comment/CommentList";
 import { useEffect } from "react";

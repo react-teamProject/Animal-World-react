@@ -12,15 +12,17 @@ const BoardInput = () => {
   const [user, setUser] = useState("");
   const [pw, setPW] = useState("");
   //------------------------------------
-  // new Date 사용하여 현재시간 추가 
+  // new Date 사용하여 현재시간 추가
   const date = new Date().toLocaleString();
   // -----------------------------------
   const [fireURL, setFireURL] = useState("");
+  const [fireCheck, setFireCheck] = useState("");
   //------------------------------------
   //useEffect를 사용해서 최초 uploadImg를 실행해준다.
   useEffect(() => {
     uploadImg();
-  }, []);
+    console.log("test가 업데이트 되었습니다.");
+  }, [fireCheck]);
   //------------------------------------
 
   const dispatch = useDispatch();
@@ -55,9 +57,6 @@ const BoardInput = () => {
       alert("제목과 내용 모두 입력하세요");
       return;
     }
-
-    // ----- 이미지url 가져오기 바뀐 부분 ------
-    uploadImg();
 
     const newBoard = {
       id: uuidv4(),
@@ -111,6 +110,7 @@ const BoardInput = () => {
       const imgDataUrl = finishedEvent.currentTarget.result;
       localStorage.setItem("imgDataUrl", imgDataUrl);
       document.getElementById("boardImg").src = imgDataUrl;
+      setFireCheck(imgDataUrl);
     };
   };
 
