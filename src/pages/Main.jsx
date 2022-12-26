@@ -1,25 +1,48 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import BoardList from "../components/features/board/BoardList";
 import Layout from "../components/UI/Layout";
 import { __getBoards } from "../redux/modules/boardSlice";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Main page 에 필요한 요소 import
 // ex) boardList (게시글 전체 list)
 // header & footer => Layout에 존재하기 때문에 자동 포함
 
 const Main = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(__getBoards());
   }, [dispatch]);
 
+  //enter (keycode 13)로 검색 가능
+  const handleOnKeyUp = (event) => {
+    if (event.keyCode === 13) {
+      navigate(`/?q=${search}`);
+    }
+  };
+  const handleOnClickSearchButton = (event) => {
+    event.preventDefault();
+    navigate(`/?q=${search}`);
+    setSearch("");
+  };
+
   return (
     <Layout>
       <DetailLink to={`/boardwrite`}>글쓰기</DetailLink>
       <h2>최근 작성한 게시물</h2>
+      <form onSubmit={handleOnClickSearchButton}>
+        <input
+          onKeyUp={handleOnKeyUp}
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          placeholder="검색어를 입력해주세요."
+        />
+        <button type="submit">검색</button>
+      </form>
       <BoardList />
 
       {/* <Container>
