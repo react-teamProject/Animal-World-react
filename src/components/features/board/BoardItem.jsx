@@ -19,6 +19,8 @@ const BoardItem = ({ board }) => {
         <h3>{board.title}</h3>
         <p>{board.user}</p>
         <p>{board.content}</p>
+        <ImgTag src={board.ImgUrl} alt="boardImg" />
+        <p>{board.date}</p>
       </DetailLink>
     </div>
   );
@@ -28,4 +30,9 @@ export default BoardItem;
 
 const DetailLink = styled(Link)`
   text-decoration: none;
+`;
+
+const ImgTag = styled.img`
+  width: 100px;
+  height: 100px;
 `;

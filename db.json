@@ -1,25 +1,13 @@
 {
   "board": [
     {
-      "id": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
-      "user": "tess",
-      "pw": "1234",
-      "title": "uuuu",
-      "content": "uuuu"
-    },
-    {
-      "id": "8d6a1c21-eb2e-40ed-a782-9dff90f2e24e",
-      "user": "yy",
-      "pw": "11",
-      "title": "sdfsd",
-      "content": "etse"
-    },
-    {
-      "id": "154b94a1-7ecf-4af7-a85d-c1b2f6dc38eb",
-      "user": "t",
-      "pw": "111",
-      "title": "test",
-      "content": "test"
+      "id": "7d4f1fe0-08a0-4f73-a900-b4edec926419",
+      "user": "sample1",
+      "pw": "sample1",
+      "title": "sample1",
+      "content": "sample1",
+      "ImgUrl": "https://firebasestorage.googleapis.com/v0/b/palpalhajo.appspot.com/o/images%2Fc78dbb04-cefd-4741-ae1c-6297ce8ca351?alt=media&token=debe3cf4-7417-499c-b6bf-1eb0addda80b",
+      "date": "12/26/2022, 2:29:28 PM"
     }
   ]
 }
