@@ -1,28 +1,13 @@
 {
   "board": [
     {
-      "id": "4e1096b9-0c79-49d3-8f4b-15412c57ef6b",
-      "user": "ㅇㄹ",
-      "pw": "ㅇㄹ",
-      "title": "ㅇㄹ",
-      "content": "ㅇㄹ",
-      "ImgUrl": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMDJfMjM1%2FMDAxNjY5OTgxMDY3NzEy.HDOVXjJDHlA2mqjcKXcxd1NRfcjDOEY64wh9wxslB2Eg.jue_h-FvVu0b2x6iFpPR2cp-EH5ZKnpCisiRXHoA8iYg.JPEG.0519kimsy%2FIMG_4843.jpg&type=sc960_832"
-    },
-    {
-      "id": "3530eb0b-1704-4b80-ac57-f56a27a5eb64",
-      "user": "df",
-      "pw": "df",
-      "title": "df",
-      "content": "df",
-      "ImgUrl": "https://firebasestorage.googleapis.com/v0/b/palpalhajo.appspot.com/o/images%2F2167fe47-2dc2-412f-8858-e3cbac5e1059?alt=media&token=3ea7a8db-83c7-486f-af4a-0cdd7e0e9325"
-    },
-    {
-      "id": "4947d6d8-fafd-452f-a4f6-8fbdbefa40b9",
-      "user": "dfdf",
-      "pw": "dfdfd",
-      "title": "dfdf",
-      "content": "dfdf",
-      "ImgUrl": "https://firebasestorage.googleapis.com/v0/b/palpalhajo.appspot.com/o/images%2Fd3cdbaf7-e65b-4bcb-9141-332443fd113c?alt=media&token=30023275-72b7-496a-9120-7be4e1ae9130"
+      "id": "7d4f1fe0-08a0-4f73-a900-b4edec926419",
+      "user": "sample1",
+      "pw": "sample1",
+      "title": "sample1",
+      "content": "sample1",
+      "ImgUrl": "https://firebasestorage.googleapis.com/v0/b/palpalhajo.appspot.com/o/images%2Fc78dbb04-cefd-4741-ae1c-6297ce8ca351?alt=media&token=debe3cf4-7417-499c-b6bf-1eb0addda80b",
+      "date": "12/26/2022, 2:29:28 PM"
     }
   ]
 }

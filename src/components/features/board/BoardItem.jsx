@@ -21,6 +21,7 @@ const BoardItem = ({ board }) => {
         <p>{board.user}</p>
         <p>{board.content}</p>
         <ImgTag src={board.ImgUrl} alt="boardImg" />
+        <p>{board.date}</p>
       </DetailLink>
     </div>
   );

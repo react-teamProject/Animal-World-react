@@ -11,6 +11,7 @@ const initialState = {
       boardTitle: "",
       boardContent: "",
       ImgUrl: "",
+      date: "",
     },
   ],
   isLoading: false,

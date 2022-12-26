@@ -12,10 +12,12 @@ const BoardInput = () => {
   const [user, setUser] = useState("");
   const [pw, setPW] = useState("");
   //------------------------------------
-  // fireURL는 state를 만들어주기
+  // new Date 사용하여 현재시간 추가 
+  const date = new Date().toLocaleString();
+  // -----------------------------------
   const [fireURL, setFireURL] = useState("");
   //------------------------------------
-  // useEffect를 사용해서 최초 uploadImg를 실행해준다.
+  //useEffect를 사용해서 최초 uploadImg를 실행해준다.
   useEffect(() => {
     uploadImg();
   }, []);
@@ -57,32 +59,14 @@ const BoardInput = () => {
     // ----- 이미지url 가져오기 바뀐 부분 ------
     uploadImg();
 
-    // ---------------🐥🐥다경작업🐥🐥-------------------------
-    // const imgRef = ref(storage, `images/${uuidv4()}`);
-    // const imgDataUrl = localStorage.getItem("imgDataUrl");
-    // let downloadUrl;
-
-    // if (imgDataUrl) {
-    //   uploadString(imgRef, imgDataUrl, "data_url")
-    //     .then((response) => {
-    //       downloadUrl = getDownloadURL(response.ref).then((response) => {
-    //         console.log("response : ", response);
-    //         setFireURL(response);
-    //       });
-    //     })
-    //     .catch((error) => {
-    //       console.log("error", error);
-    //     });
-    // }
-    // --------------------------------
     const newBoard = {
       id: uuidv4(),
       user: user,
       pw: pw,
       title: title,
       content: content,
-      // ImgUrl 추가
       ImgUrl: fireURL,
+      date: date,
     };
 
     console.log("newBoard:", newBoard);
