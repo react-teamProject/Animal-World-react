@@ -1,70 +1,13 @@
 {
   "board": [
     {
-      "id": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
-      "user": "tess",
-      "pw": "1234",
-      "title": "eee",
-      "content": "eee"
-    },
-    {
-      "id": "eec12688-dd74-4e3b-b1ba-9221e4a29231",
-      "user": "aaaa",
-      "pw": "aaa",
-      "title": "aaaa",
-      "content": "aaaa"
-    }
-  ],
-  "comment": [
-    {
-      "boardId": "",
-      "id": "1d3a5626-b9f8-443f-846f-89ab29c52763",
-      "user": "aaaa",
-      "pw": "aaaa",
-      "content": "aaaa"
-    },
-    {
-      "boardId": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
-      "id": "94afa35c-ffbe-4349-8c84-a8e68a916017",
-      "user": "bbb",
-      "pw": "bbb",
-      "content": "33333",
-      "comment": "111111"
-    },
-    {
-      "boardId": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
-      "id": "8450ed34-039f-47a2-8c06-bc2795ad6ca7",
-      "user": "kkk",
-      "pw": "kkk",
-      "content": "777777"
-    },
-    {
-      "boardId": "639729f8-6adb-44fa-8610-3a97e2e6dec8",
-      "id": "999c7783-419e-4404-80f6-73e432bfc51d",
-      "user": "nnnn",
-      "pw": "nnnn",
-      "content": "nnn"
-    },
-    {
-      "boardId": "5edfe1f8-6d7f-41d0-b4f9-ec418e8ff6b1",
-      "id": "4dabb11a-c55d-4ed3-8c99-2ce1efba598b",
-      "user": "qqq",
-      "pw": "qqq",
-      "content": "qqq"
-    },
-    {
-      "boardId": "5edfe1f8-6d7f-41d0-b4f9-ec418e8ff6b1",
-      "id": "5855669f-e1b0-479d-890e-be1bb71dcddd",
-      "user": "asdf",
-      "pw": "adsf",
-      "content": "asdf"
-    },
-    {
-      "boardId": "5edfe1f8-6d7f-41d0-b4f9-ec418e8ff6b1",
-      "id": "f52aa0a8-edd7-40f0-87be-eed28bfcb303",
-      "user": "asdf",
-      "pw": "aaaa",
-      "content": "aaaa"
+      "id": "7d4f1fe0-08a0-4f73-a900-b4edec926419",
+      "user": "sample1",
+      "pw": "sample1",
+      "title": "sample1",
+      "content": "sample1",
+      "ImgUrl": "https://firebasestorage.googleapis.com/v0/b/palpalhajo.appspot.com/o/images%2Fc78dbb04-cefd-4741-ae1c-6297ce8ca351?alt=media&token=debe3cf4-7417-499c-b6bf-1eb0addda80b",
+      "date": "12/26/2022, 2:29:28 PM"
     }
   ]
 }

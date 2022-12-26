@@ -1,1 +1,1 @@
-export { default, getBoardID } from "./boardSlice";
+export { default, editBoard } from "./boardSlice";

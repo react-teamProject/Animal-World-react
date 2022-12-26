@@ -6,7 +6,7 @@ const BoardList = () => {
   const board = useSelector((state) => state.boardSlice.board);
 
   return (
-    <div>
+    <div key={board}>
       <div>
         <h2>최근 작성한 게시물</h2>
         {board &&
