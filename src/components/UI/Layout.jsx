@@ -10,8 +10,8 @@ const Layout = ({ children }) => {
     <div>
       <GlobalStyle />
       <Header />
-      {/* {children} */}
-      <MainLayout />
+      {children}
+      {/* <MainLayout /> */}
       <Footer />
     </div>
   );
