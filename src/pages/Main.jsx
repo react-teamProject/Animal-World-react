@@ -5,6 +5,7 @@ import Layout from "../components/UI/Layout";
 import { __getBoards } from "../redux/modules/boardSlice";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import SimpleSlider from "../components/features/board/SimpleSlider";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Main = () => {
   return (
     <Layout>
       <MainBox>
+        <SimpleSlider />
         <Search>
           <input
             class="input"

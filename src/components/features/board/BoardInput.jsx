@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { storage } from "../../../firebase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import styled from "styled-components";
-import profile from "../../styles/image/profile.png";
+// import profile from "../../styles/GlobalStyle/";
 
 const BoardInput = () => {
   const [title, setTitle] = useState("");
