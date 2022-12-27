@@ -15,14 +15,19 @@ const Main = () => {
 
   return (
     <Layout>
-      <DetailLink to={`/boardwrite`}>글쓰기</DetailLink>
+      <MainBox>
+        <Search>
+          <input
+            class="input"
+            type="text"
+            placeholder="검색어를 입력해주세요"
+          />
+          <DetailLink to={`/boardwrite`}>
+            <WriteButton>글쓰기</WriteButton>
+          </DetailLink>
+        </Search>
+      </MainBox>
 
-      <Search>
-        <p class="title">검색을 통해 원하는 글을 찾을 수 있습니다</p>
-        <input class="input" type="text" placeholder="검색어를 입력해주세요" />
-      </Search>
-
-      <h2>최근 작성한 게시물</h2>
       <BoardList />
     </Layout>
   );
@@ -34,18 +39,31 @@ const DetailLink = styled(Link)`
   text-decoration: none;
 `;
 
+const MainBox = styled.div`
+  max-width: 1200px;
+  margin: auto;
+`;
+
+const WriteButton = styled.button`
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ff8c00;
+
+  &:hover {
+    background-color: #fff;
+    color: #ff8c00;
+  }
+`;
+
 const Search = styled.div`
   padding-top: 64px;
-
-  .title {
-    font-size: 22px;
-    font-weight: 900;
-    text-align: center;
-    color: #ffb688;
-  }
+  display: flex;
+  justify-content: space-between;
 
   .input {
-    width: 100%;
+    width: 400px;
     padding: 12px 24px;
 
     background-color: transparent;
