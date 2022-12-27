@@ -9,7 +9,6 @@ const MainLayout = () => {
           <div className="left-dot-box">
             <div className="side-content">
               <Logo src="/assets/animal_world_logo.png" />
-              <SideTextWrapper></SideTextWrapper>
             </div>
           </div>
         </LeftBox>
@@ -72,7 +71,6 @@ const LeftBox = styled.div`
     justify-content: center;
     align-items: flex-end;
     position: relative;
-
     width: 250px;
     height: 550px;
     border: 3px dashed #f0f8ff;
@@ -82,25 +80,34 @@ const LeftBox = styled.div`
   .side-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 230px;
     height: 500px;
     background-color: #f0f8ff;
     border-radius: 16px;
     margin-bottom: 10px;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    p {
+      margin: 5px;
+    }
+    input {
+      border: 1px solid #ff8c00;
+      border-radius: 16px;
+      background-color: #f0f8ff;
+    }
   }
 `;
 
 const Logo = styled.img`
+  margin: 50px;
   width: 250px;
   height: 250px;
 `;
-const SideTextWrapper = styled.div`
-  width: 200px;
-  height: 100px;
-`;
-
 const RightBox = styled.div`
   display: flex;
   justify-content: flex-start;
