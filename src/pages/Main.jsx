@@ -20,7 +20,7 @@ const Main = () => {
         <SimpleSlider />
         <Search>
           <input
-            class="input"
+            className="input"
             type="text"
             placeholder="검색어를 입력해주세요"
           />
