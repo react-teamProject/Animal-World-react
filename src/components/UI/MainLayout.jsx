@@ -1,5 +1,4 @@
 import React from "react";
-
 import styled from "styled-components";
 
 const MainLayout = () => {
@@ -9,13 +8,14 @@ const MainLayout = () => {
         <LeftBox>
           <div className="left-dot-box">
             <div className="side-content">
-              <div></div>
+              <Logo src="/assets/animal_world_logo.png" />
+              <SideText />
             </div>
           </div>
         </LeftBox>
         <RightBox>
           <div className="right-dot-box">
-            <div className="title">
+            <div className="address">
               <div>https://www.animalworld.com/88</div>
             </div>
             <div className="main-content"></div>
@@ -33,6 +33,7 @@ const MenuWrapper = styled.div`
   display: flex;
   position: relative;
   right: 74px;
+  top: -100px;
   flex-direction: column;
 `;
 const Menu = styled.button`
@@ -42,10 +43,11 @@ const Menu = styled.button`
   border: none;
   background-color: #f0f8ff;
   flex-direction: column;
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 8px 8px 0%;
   width: 80px;
   height: 50px;
   margin: 10px;
+  box-shadow: 8px 26px 17px hsl(0deg 54% 80% / 14%); ;
 `;
 const MainWrapper = styled.section`
   display: flex;
@@ -63,6 +65,8 @@ const LeftBox = styled.div`
   background-color: #ff8c00;
   border-radius: 16px;
   border-right: none;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 38%);
+
   .left-dot-box {
     display: flex;
     justify-content: center;
@@ -76,12 +80,26 @@ const LeftBox = styled.div`
     border-right: none;
   }
   .side-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 230px;
     height: 500px;
     background-color: #f0f8ff;
     border-radius: 16px;
     margin-bottom: 10px;
   }
+`;
+
+const Logo = styled.img`
+  width: 250px;
+  height: 250px;
+`;
+const SideText = styled.div`
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
 `;
 
 const RightBox = styled.div`
@@ -94,6 +112,7 @@ const RightBox = styled.div`
   border: 1px solid #f0f8ff;
   border-radius: 16px;
   border-left: none;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0%/0.38);
   .right-dot-box {
     display: flex;
     flex-direction: column;
@@ -107,10 +126,14 @@ const RightBox = styled.div`
     border-radius: 16px;
     border-left: none;
   }
-  .title {
+  .address {
     display: flex;
-    align-items: center;
-    padding: 10px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 600px;
+    height: 36px;
+    padding: 4px;
+    font-size: 12px;
   }
   .main-content {
     width: 620px;
