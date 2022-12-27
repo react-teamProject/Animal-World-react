@@ -1,29 +1,48 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import BoardList from "../components/features/board/BoardList";
 import Layout from "../components/UI/Layout";
 import { __getBoards } from "../redux/modules/boardSlice";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SimpleSlider from "../components/features/board/SimpleSlider";
 
 const Main = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(__getBoards());
   }, [dispatch]);
 
+  //enter (keycode 13)로 검색 가능
+  const handleOnKeyUp = (event) => {
+    if (event.keyCode === 13) {
+      navigate(`/?q=${search}`);
+    }
+  };
+  const handleOnClickSearchButton = (event) => {
+    event.preventDefault();
+    navigate(`/?q=${search}`);
+    setSearch("");
+  };
   return (
     <Layout>
       <MainBox>
         <SimpleSlider />
         <Search>
-          <input
-            className="input"
-            type="text"
-            placeholder="검색어를 입력해주세요"
-          />
+          <form onSubmit={handleOnClickSearchButton}>
+            <input
+              onKeyUp={handleOnKeyUp}
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              className="input"
+              type="text"
+              placeholder="검색어를 입력해주세요"
+            />
+            <button type="submit">검색</button>
+          </form>
           <DetailLink to={`/boardwrite`}>
             <WriteButton>글쓰기</WriteButton>
           </DetailLink>
