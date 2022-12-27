@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DetailButton from "../../../pages/DetailButton";
+import { toast } from "react-toastify";
 
 const BoardItemDetail = () => {
   const dispatch = useDispatch();
@@ -42,9 +43,10 @@ const BoardItemDetail = () => {
   const onDeleteHandler = (id) => {
     if (pwTest === pw) {
       dispatch(__deleteBoards(id));
+      toast.success("삭제가 완료되었습니다!");
       navigator("/");
     } else {
-      alert("비밀번호가 일치하지 않습니다.");
+      toast.error("비밀번호가 일치하지 않습니다.");
       setPWTest("");
     }
   };
@@ -58,7 +60,7 @@ const BoardItemDetail = () => {
 
     // 입력칸 공백 방지
     if (!title || !content) {
-      alert("제목과 내용 모두 입력하세요");
+      toast.warning("제목과 내용 모두 입력하세요");
       return;
     }
 
@@ -69,10 +71,10 @@ const BoardItemDetail = () => {
         content: content,
       };
       dispatch(__editBoards(newBoard));
-      alert("수정했습니다!");
+      toast.success("수정했습니다!");
       toggleEditInput();
     } else {
-      alert("비밀번호가 일치하지 않습니다.");
+      toast.error("비밀번호가 일치하지 않습니다.");
       setPWTest("");
     }
   };
@@ -108,7 +110,8 @@ const BoardItemDetail = () => {
               </StContent>
               <StContent
                 height="170px"
-                style={{ display: showEdit ? "block" : "none" }}>
+                style={{ display: showEdit ? "block" : "none" }}
+              >
                 {item.content}
               </StContent>
 
@@ -116,7 +119,8 @@ const BoardItemDetail = () => {
                 <div
                   style={{
                     display: showDelete && showEdit ? "block" : "none",
-                  }}>
+                  }}
+                >
                   <DetailButton width="50px" onClick={toggleDeleteInput}>
                     삭제
                   </DetailButton>
@@ -156,7 +160,8 @@ const BoardItemDetail = () => {
                   <DetailButton
                     onClick={(e) => {
                       onEditHandler(e);
-                    }}>
+                    }}
+                  >
                     수정 완료
                   </DetailButton>
 

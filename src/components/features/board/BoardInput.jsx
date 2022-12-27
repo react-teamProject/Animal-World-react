@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { __postBoards } from "../../../redux/modules/boardSlice";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { storage } from "../../../firebase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 const BoardInput = () => {
   const [title, setTitle] = useState("");
@@ -18,15 +19,23 @@ const BoardInput = () => {
   const date = new Date().toLocaleString();
   // -----------------------------------
   const [fireURL, setFireURL] = useState("");
+  const [fireCheck, setFireCheck] = useState("");
   //------------------------------------
   //useEffect를 사용해서 최초 uploadImg를 실행해준다.
   useEffect(() => {
     uploadImg();
-  }, []);
+    console.log("test가 업데이트 되었습니다.");
+  }, [fireCheck]);
   //------------------------------------
 
   const dispatch = useDispatch();
   const navigator = useNavigate();
+
+  // ref (빈칸 공백 방지 때 사용)
+  const usernameInput = useRef();
+  const boardTitleInput = useRef();
+  const boardContentInput = useRef();
+  const PWInput = useRef();
 
   // title change
   const onTitleChange = async (e) => {
@@ -54,13 +63,67 @@ const BoardInput = () => {
     e.preventDefault();
 
     // 입력칸 공백 방지
-    if (!title || !content || !user || !pw) {
-      alert("제목과 내용 모두 입력하세요");
+    if (!user && !pw && !title && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!pw && !title && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!user && !title && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw && !title) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!title && !content) {
+      toast.warning("제목과 내용을 입력해주세요!");
+      boardTitleInput.current.focus();
+      return;
+    } else if (!pw && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!pw && !title) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!user && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !title) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw) {
+      toast.warning("반려동물 이름과 비밀번호를 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!content) {
+      toast.warning("내용을 입력해주세요!");
+      boardContentInput.current.focus();
+      return;
+    } else if (!title) {
+      toast.warning("제목을 입력해주세요!");
+      boardTitleInput.current.focus();
+      return;
+    } else if (!pw) {
+      toast.warning("비밀번호를 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!user) {
+      toast.warning("반려동물 이름을 입력해주세요!");
+      usernameInput.current.focus();
       return;
     }
-
-    // ----- 이미지url 가져오기 바뀐 부분 ------
-    uploadImg();
 
     const newBoard = {
       id: uuidv4(),
@@ -114,6 +177,7 @@ const BoardInput = () => {
       const imgDataUrl = finishedEvent.currentTarget.result;
       localStorage.setItem("imgDataUrl", imgDataUrl);
       document.getElementById("boardImg").src = imgDataUrl;
+      setFireCheck(imgDataUrl);
     };
   };
 
@@ -170,7 +234,8 @@ const BoardInput = () => {
             "flex-direction": "column",
             "align-items": "center",
             "justfy-content": "center",
-          }}>
+          }}
+        >
           <div>
             <SideContentWrapper>
               <p>나만 볼 수 없어</p>

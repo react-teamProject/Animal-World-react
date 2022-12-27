@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { __postComment } from "../../../redux/modules/commentSlice";
 import styled from "styled-components";
 import DetailButton from "../../../pages/DetailButton";
+import { toast } from "react-toastify";
 
 const CommentInput = ({ param }) => {
   //useState를 하나만 쓰고 객체 분해 할당하여 이용함.
@@ -16,6 +17,7 @@ const CommentInput = ({ param }) => {
     time: "",
   });
 
+  // ref (빈칸 공백 방지에 이용)
   const userInput = useRef();
   const pwInput = useRef();
   const contentInput = useRef();
@@ -32,17 +34,33 @@ const CommentInput = ({ param }) => {
     //객체 분해 할당해주고 사용
     const { content, user, pw } = comment;
 
-    //useRef 이용하여 리팩토링
-    if (!user) {
-      alert("닉네임을 입력하세요");
+    //useRef 이용하여 리팩토링 (공백 방지)
+    if (!user && !pw && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      userInput.current.focus();
+      return;
+    } else if (!content && !pw) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      pwInput.current.focus();
+      return;
+    } else if (!user && !pw) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      userInput.current.focus();
+      return;
+    } else if (!user && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      userInput.current.focus();
+      return;
+    } else if (!user) {
+      toast.warning("닉네임을 입력해주세요!");
       userInput.current.focus();
       return;
     } else if (!pw) {
-      alert("비밀번호를 입력하세요");
+      toast.warning("비밀번호를 설정해주세요!");
       pwInput.current.focus();
       return;
     } else if (!content) {
-      alert("댓글을 입력하세요");
+      toast.warning("댓글 내용을 입력해주세요!");
       contentInput.current.focus();
       return;
     }
@@ -65,6 +83,7 @@ const CommentInput = ({ param }) => {
       user: "",
       pw: "",
       content: "",
+      time: "",
     });
   };
 

@@ -1,21 +1,31 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import BoardItem from "./BoardItem";
+import styled from "styled-components";
 
 const BoardList = () => {
   const board = useSelector((state) => state.boardSlice.board);
 
   return (
     <div key={board}>
-      <div>
-        <h2>최근 작성한 게시물</h2>
-        {board &&
-          board.map((item) => {
+      <Container>
+        {board
+          .map((item) => {
             return <BoardItem key={item.id} board={item} />;
-          })}
-      </div>
+          })
+          .sort((a, b) => a.time - b.time)
+          .reverse()}
+      </Container>
     </div>
   );
 };
 
 export default BoardList;
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;

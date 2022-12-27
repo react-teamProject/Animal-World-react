@@ -6,6 +6,7 @@ import {
 } from "../../../redux/modules/commentSlice";
 import styled from "styled-components";
 import DetailButton from "../../../pages/DetailButton";
+import { toast } from "react-toastify";
 
 const CommentItem = ({ comment }) => {
   const { id, user, content, pw, time } = comment;
@@ -17,7 +18,7 @@ const CommentItem = ({ comment }) => {
       dispatch(__deleteComment(id));
       toggledeleteInput();
     } else {
-      alert("비밀번호가 틀렸습니다");
+      toast.error("비밀번호가 틀렸습니다");
       setPassword("");
     }
   };
@@ -33,8 +34,9 @@ const CommentItem = ({ comment }) => {
       };
       dispatch(__editComment(newComment));
       toggleEditInput();
+      toast.success("댓글이 수정되었습니다!");
     } else {
-      alert("비밀번호가 틀렸습니다");
+      toast.error("비밀번호가 틀렸습니다");
       setPassword("");
     }
   };

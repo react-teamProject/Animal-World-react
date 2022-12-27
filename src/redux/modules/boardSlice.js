@@ -23,7 +23,9 @@ export const __getBoards = createAsyncThunk(
   "board/getBoards",
   async (payload, thunkApi) => {
     try {
-      const data = await axios.get("http://localhost:3003/board");
+      const data = await axios.get(
+        "http://localhost:3001/board?_sort=time&_order=asc"
+      );
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
