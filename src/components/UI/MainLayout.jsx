@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   return (
     <>
       <MainWrapper>
         <LeftBox>
           <div className="left-dot-box">
             <div className="side-content">
-              <Logo src="/assets/animal_world_logo.png" />
+              {/* <Logo src="/assets/animal_world_logo.png" /> */}
             </div>
           </div>
         </LeftBox>
@@ -17,7 +17,7 @@ const MainLayout = () => {
             <div className="address">
               <div>https://www.animalworld.com/88</div>
             </div>
-            <div className="main-content"></div>
+            <div className="main-content">{children}</div>
           </div>
         </RightBox>
         <MenuWrapper>
@@ -103,11 +103,11 @@ const LeftBox = styled.div`
   }
 `;
 
-const Logo = styled.img`
-  margin: 50px;
-  width: 250px;
-  height: 250px;
-`;
+// const Logo = styled.img`
+//   margin: 50px;
+//   width: 250px;
+//   height: 250px;
+// `;
 const RightBox = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -147,6 +147,12 @@ const RightBox = styled.div`
     background-color: #f0f8ff;
     border-radius: 16px;
     margin-bottom: 10px;
+  }
+
+  .rightTag {
+    margin: 40px;
+    width: 600px;
+    border-radius: 16px;
   }
 `;
 export default MainLayout;
