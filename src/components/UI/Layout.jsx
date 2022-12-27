@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 // import MainLayout from "./MainLayout";
 import GlobalStyle from "../styles/GlobalStyle";
+//import styled from "styled-components";
 
 const Layout = ({ children }) => {
   return (
@@ -18,3 +19,7 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
+// const Main = styled.div`
+//   flex: 1;
+// `;

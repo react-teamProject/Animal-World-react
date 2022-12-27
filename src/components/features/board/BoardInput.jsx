@@ -180,7 +180,7 @@ const BoardInput = () => {
           <input type="file" onChange={onFileChange} className="inputFile" />
           <button className="submitButton">글 등록하기</button>
         </ButtonBox>
-        <ImgBox src={profile} id="boardImg" alt="boardImg" />
+        {/* <ImgBox src={profile} id="boardImg" alt="boardImg" /> */}
       </form>
     </div>
   );
