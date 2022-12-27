@@ -15,11 +15,6 @@ const BoardItem = ({ board }) => {
 
   return (
     <Box>
-      {/* <h3>{board.title}</h3>
-        <p>{board.user}</p>
-        <p>{board.content}</p>
-        <img src={board.ImgUrl} alt="boardImg" />
-        <p>{board.date}</p> */}
       <DetailLink to={`/${board.id}`} key={board.id}>
         <div className="imgBox">
           <img src={board.ImgUrl} alt="boardImg" />
@@ -37,11 +32,6 @@ export default BoardItem;
 const DetailLink = styled(Link)`
   text-decoration: none;
 `;
-
-// const ImgTag = styled.img`
-//   width: 100px;
-//   height: 100px;
-// `;
 
 const Box = styled.div`
   position: relative;
@@ -69,8 +59,8 @@ const Box = styled.div`
   }
 
   .imgBox img {
-    width: 30rem;
-    height: 30rem;
+    width: 35rem;
+    height: 34rem;
     object-fit: cover;
     resize: both;
     border-radius: 16px;
@@ -90,6 +80,7 @@ const Box = styled.div`
     align-items: flex-end;
     text-align: center;
     transition: 0.5s ease-in-out;
+    border-radius: 16px;
   }
 
   .content h3 {

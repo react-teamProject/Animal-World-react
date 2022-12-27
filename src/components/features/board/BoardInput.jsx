@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { __postBoards } from "../../../redux/modules/boardSlice";
@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { storage } from "../../../firebase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+
 const BoardInput = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -27,6 +29,12 @@ const BoardInput = () => {
 
   const dispatch = useDispatch();
   const navigator = useNavigate();
+
+  // ref (빈칸 공백 방지 때 사용)
+  const usernameInput = useRef();
+  const boardTitleInput = useRef();
+  const boardContentInput = useRef();
+  const PWInput = useRef();
 
   // title change
   const onTitleChange = async (e) => {
@@ -53,8 +61,65 @@ const BoardInput = () => {
     e.preventDefault();
 
     // 입력칸 공백 방지
-    if (!title || !content || !user || !pw) {
-      alert("제목과 내용 모두 입력하세요");
+    if (!user && !pw && !title && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!pw && !title && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!user && !title && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw && !title) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!title && !content) {
+      toast.warning("제목과 내용을 입력해주세요!");
+      boardTitleInput.current.focus();
+      return;
+    } else if (!pw && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!pw && !title) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!user && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !title) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw) {
+      toast.warning("반려동물 이름과 비밀번호를 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!content) {
+      toast.warning("내용을 입력해주세요!");
+      boardContentInput.current.focus();
+      return;
+    } else if (!title) {
+      toast.warning("제목을 입력해주세요!");
+      boardTitleInput.current.focus();
+      return;
+    } else if (!pw) {
+      toast.warning("비밀번호를 입력해주세요!");
+      PWInput.current.focus();
+      return;
+    } else if (!user) {
+      toast.warning("반려동물 이름을 입력해주세요!");
+      usernameInput.current.focus();
       return;
     }
 
@@ -122,7 +187,8 @@ const BoardInput = () => {
           id="user"
           value={user}
           onChange={onUserChange}
-          placeholder="닉네임"
+          placeholder="반려동물 이름"
+          ref={usernameInput}
         />
         <input
           type="password"
@@ -130,6 +196,7 @@ const BoardInput = () => {
           value={pw}
           onChange={onPWChange}
           placeholder="비밀번호"
+          ref={PWInput}
         />
         <input
           type="text"
@@ -137,12 +204,14 @@ const BoardInput = () => {
           value={title}
           onChange={onTitleChange}
           placeholder="제목을 입력해주세요"
+          ref={boardTitleInput}
         />
         <textarea
           id="content"
           value={content}
           onChange={onContentChange}
           placeholder="내용을 입력해주세요"
+          ref={boardContentInput}
         />
         <div id="imgUrl"></div>
         <button>글 등록하기</button>
