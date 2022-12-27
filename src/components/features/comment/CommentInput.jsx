@@ -115,8 +115,6 @@ const CommentInput = ({ param }) => {
   );
 };
 
-export default CommentInput;
-
 const StCommentForm = styled.form`
   /* border-top: solid 2px #ff8c00; */
   padding: 0px 5px 0px 5px;
@@ -150,3 +148,5 @@ const StEditTextArea = styled.textarea`
   border-radius: 16px;
   padding: 10px;
 `;
+
+export default CommentInput;

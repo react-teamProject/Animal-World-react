@@ -162,15 +162,15 @@ const BoardInput = () => {
         <div id="imgUrl"></div>
         <div
           style={{
-            transform: "translate(-210px, -200px)",
-            width: "100px",
+            transform: "translate(-183px, -200px)",
+            width: "50px",
             padding: "20px",
             display: "flex",
+            "font-size": "15px",
             "flex-direction": "column",
             "align-items": "center",
             "justfy-content": "center",
-          }}
-        >
+          }}>
           <div>
             <SideContentWrapper>
               <p>나만 볼 수 없어</p>
@@ -212,7 +212,7 @@ const SideContentWrapper = styled.div`
   margin: 0px;
 `;
 const ImgBox = styled.img`
-  transform: translate(-310px, -629px);
+  transform: translate(-444px, -660px);
   margin: 50px;
   width: 250px;
   height: 250px;
@@ -228,7 +228,7 @@ const InputBox = styled.input`
 `;
 
 const ButtonBox = styled.button`
-  transform: translate(95px, -150px);
+  transform: translate(95px, -187px);
   width: 430px;
   background-color: #f1f8fe;
   border: 1px solid #f1f8fe;
