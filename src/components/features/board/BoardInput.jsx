@@ -13,6 +13,7 @@ const BoardInput = () => {
   const [content, setContent] = useState("");
   const [user, setUser] = useState("");
   const [pw, setPW] = useState("");
+  const [test, setTest] = useState("");
   //------------------------------------
   // new Date 사용하여 현재시간 추가
   const date = new Date().toLocaleString();
@@ -49,6 +50,7 @@ const BoardInput = () => {
   // user, pw change
   const onUserChange = (e) => {
     setUser(e.target.value);
+    setTest(e.target.value);
   };
 
   const onPWChange = (e) => {
@@ -169,7 +171,7 @@ const BoardInput = () => {
   const onFileChange = (event) => {
     const theFile = event.target.files[0];
     const reader = new FileReader();
-    console.log("theFile : ", theFile);
+    // console.log("theFile : ", theFile);
     reader.readAsDataURL(theFile);
     reader.onloadend = (finishedEvent) => {
       const imgDataUrl = finishedEvent.currentTarget.result;
@@ -179,54 +181,123 @@ const BoardInput = () => {
     };
   };
 
+  // function onChangeHandler(event) {}
+
   return (
     <div>
-      <form onSubmit={onSubmitHandler}>
-        <input
-          type="text"
-          id="user"
-          value={user}
-          onChange={onUserChange}
-          placeholder="반려동물 이름"
-          ref={usernameInput}
-        />
-        <input
-          type="password"
-          id="pw"
-          value={pw}
-          onChange={onPWChange}
-          placeholder="비밀번호"
-          ref={PWInput}
-        />
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={onTitleChange}
-          placeholder="제목을 입력해주세요"
-          ref={boardTitleInput}
-        />
-        <textarea
-          id="content"
-          value={content}
-          onChange={onContentChange}
-          placeholder="내용을 입력해주세요"
-          ref={boardContentInput}
-        />
+      <form onSubmit={onSubmitHandler} style={{ postion: "relative" }}>
+        <div className="rightTag">
+          <InputBox
+            type="text"
+            id="user"
+            value={user}
+            onChange={onUserChange}
+            placeholder="반려동물이름"
+          />
+          <InputBox
+            type="password"
+            id="pw"
+            value={pw}
+            onChange={onPWChange}
+            placeholder="비밀번호"
+          />
+          <InputBox
+            type="text"
+            id="title"
+            value={title}
+            onChange={onTitleChange}
+            placeholder="제목을 입력해주세요"
+          />
+          <textarea
+            id="content"
+            value={content}
+            onChange={onContentChange}
+            placeholder="내용을 입력해주세요"
+            style={{
+              padding: "10px",
+              width: "80%",
+              height: "180px",
+              margin: "10px",
+              border: "2px solid #ff8c00",
+              "border-radius": "16px",
+            }}
+          />
+        </div>
         <div id="imgUrl"></div>
-        <button>글 등록하기</button>
-        {/* // --------------------------------- */}
-        <ImgBox src="/image.jpg" id="boardImg" alt="boardImg" />
-        <input type="file" onChange={onFileChange} />
-        {/* // ---------------------------------- */}
+        <div
+          style={{
+            transform: "translate(-183px, -200px)",
+            width: "50px",
+            padding: "20px",
+            display: "flex",
+            "font-size": "15px",
+            "flex-direction": "column",
+            "align-items": "center",
+            "justfy-content": "center",
+          }}
+        >
+          <div>
+            <SideContentWrapper>
+              <p>나만 볼 수 없어</p>
+              <p> 소중한</p>
+            </SideContentWrapper>
+            <input
+              type="text/"
+              style={{
+                "border-radius": "10px",
+                border: "1px solid #ff8c00",
+                width: "100px",
+              }}
+              value={test}
+              disabled
+            />
+          </div>
+        </div>
+        <ButtonBox>
+          <input type="file" onChange={onFileChange} className="inputFile" />
+          <button className="submitButton">글 등록하기</button>
+        </ButtonBox>
+        <ImgBox
+          src="/assets/animal_world_logo.png"
+          id="boardImg"
+          alt="boardImg"
+        />
       </form>
     </div>
   );
 };
 
 export default BoardInput;
+const SideContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+`;
 const ImgBox = styled.img`
-  width: 100px;
-  height: 100px;
+  transform: translate(-444px, -660px);
+  margin: 50px;
+  width: 250px;
+  height: 250px;
+`;
+
+const InputBox = styled.input`
+  padding: 5px;
+  border-radius: 16px;
+  border: 2px solid #ff8c00;
+  width: 80%;
+  margin: 10px;
+  height: 25px;
+`;
+
+const ButtonBox = styled.button`
+  transform: translate(95px, -187px);
+  width: 430px;
+  background-color: #f1f8fe;
+  border: 1px solid #f1f8fe;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;

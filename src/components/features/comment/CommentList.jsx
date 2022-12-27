@@ -17,7 +17,6 @@ const CommentList = ({ param }) => {
   return (
     <div>
       <div>
-        <h2>댓글</h2>
         {comment
           .filter((item) => item.boardId === param)
           .map((item) => {

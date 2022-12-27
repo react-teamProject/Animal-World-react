@@ -41,7 +41,7 @@ export const __deleteComment = createAsyncThunk(
   "comment/deleteComment",
   async (payload, thunkApi) => {
     try {
-      await axios.delete(`http://localhost:3001/comment/${payload}`);
+      await axios.delete(`http://localhost:3003/comment/${payload}`);
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -53,7 +53,7 @@ export const __editComment = createAsyncThunk(
   "comment/editComment",
   async (payload, thunkApi) => {
     try {
-      await axios.patch(`http://localhost:3001/comment/${payload.id}`, payload);
+      await axios.patch(`http://localhost:3003/comment/${payload.id}`, payload);
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

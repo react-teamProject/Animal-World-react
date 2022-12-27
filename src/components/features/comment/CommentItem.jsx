@@ -4,6 +4,8 @@ import {
   __deleteComment,
   __editComment,
 } from "../../../redux/modules/commentSlice";
+import styled from "styled-components";
+import DetailButton from "../../../pages/DetailButton";
 import { toast } from "react-toastify";
 
 const CommentItem = ({ comment }) => {
@@ -57,51 +59,110 @@ const CommentItem = ({ comment }) => {
 
   return (
     <div>
-      <p>닉네임: {user}</p>
+      <StCommentContainer>
+        <StCommentContent max_width="100px" min_width="50px">
+          {user}
+        </StCommentContent>
 
-      <p style={{ display: showEdit ? "block" : "none" }}>내용: {content}</p>
-      <input
-        style={{ display: showEdit ? "none" : "block" }}
-        value={commentContent}
-        onChange={(e) => setCommentContent(e.target.value)}
-      />
-      <p>임시 비번: {pw}</p>
-      <p>{time}</p>
-
-      <div style={{ display: showDelete && showEdit ? "block" : "none" }}>
-        <button onClick={toggledeleteInput}>삭제</button>
-        <button onClick={toggleEditInput}>수정</button>
-      </div>
-
-      <div style={{ display: showEdit ? "none" : "block" }}>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="비밀번호"
-          value={password}
-        />
-        <button
-          onClick={() => {
-            OnClickEditCommentHandler(id);
-          }}
+        <StCommentContent
+          max_width="300px"
+          min_width="200px"
+          style={{ display: showEdit ? "block" : "none" }}
         >
-          수정완료
-        </button>
-        <button onClick={toggleEditInput}>취소</button>
-      </div>
-
-      <div style={{ display: showDelete ? "none" : "block" }}>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="비밀번호"
-          value={password}
+          {content}
+        </StCommentContent>
+        <StEditTextArea
+          style={{ display: showEdit ? "none" : "block" }}
+          value={commentContent}
+          onChange={(e) => setCommentContent(e.target.value)}
         />
-        <button onClick={() => onClickDeleteHandler(id)}>삭제완료</button>
-        <button onClick={toggledeleteInput}>취소</button>
-      </div>
+
+        <StTime>{time}</StTime>
+        <div style={{ display: showDelete && showEdit ? "block" : "none" }}>
+          <DetailButton width="50px" onClick={toggledeleteInput}>
+            삭제
+          </DetailButton>
+          <DetailButton width="50px" onClick={toggleEditInput}>
+            수정
+          </DetailButton>
+        </div>
+
+        <StButtonContainer style={{ display: showEdit ? "none" : "block" }}>
+          <StInput
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="비밀번호"
+            value={password}
+          />
+          <DetailButton
+            onClick={() => {
+              OnClickEditCommentHandler(id);
+            }}
+          >
+            수정완료
+          </DetailButton>
+          <DetailButton width="50px" onClick={toggleEditInput}>
+            취소
+          </DetailButton>
+        </StButtonContainer>
+
+        <StButtonContainer style={{ display: showDelete ? "none" : "block" }}>
+          <StInput
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="비밀번호"
+            value={password}
+          />
+          <DetailButton onClick={() => onClickDeleteHandler(id)}>
+            삭제완료
+          </DetailButton>
+          <DetailButton width="50px" onClick={toggledeleteInput}>
+            취소
+          </DetailButton>
+        </StButtonContainer>
+      </StCommentContainer>
     </div>
   );
 };
 
 export default CommentItem;
+
+const StCommentContainer = styled.div`
+  padding: 0px 5px 0px 5px;
+  /* background-color: pink; */
+  display: flex;
+  align-items: center;
+`;
+
+const StInput = styled.input`
+  border-radius: 10px;
+  width: 100px;
+  border: solid 2px #ff8c00;
+  margin: 0px 0px 5px 0px;
+  padding: 4px;
+`;
+
+const StEditTextArea = styled.textarea`
+  border-radius: 10px;
+  border: none;
+`;
+
+const StCommentContent = styled.p`
+  min-width: ${({ min_width }) => min_width};
+  max-width: ${({ max_width }) => max_width};
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+  overflow: hidden;
+  margin-right: 5px;
+`;
+
+const StTime = styled.div`
+  width: 70px;
+  color: grey;
+  font-size: 12px;
+  border-radius: 5px;
+  background-color: white;
+`;
+
+const StButtonContainer = styled.div``;
