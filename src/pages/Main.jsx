@@ -5,6 +5,7 @@ import Layout from "../components/UI/Layout";
 import { __getBoards } from "../redux/modules/boardSlice";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import SimpleSlider from "../components/features/board/SimpleSlider";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Main = () => {
   return (
     <Layout>
       <MainBox>
+        <SimpleSlider />
         <Search>
           <input
             class="input"
@@ -42,6 +44,7 @@ const DetailLink = styled(Link)`
 const MainBox = styled.div`
   max-width: 1200px;
   margin: auto;
+  padding: 20px;
 `;
 
 const WriteButton = styled.button`
@@ -52,8 +55,8 @@ const WriteButton = styled.button`
   background-color: #ff8c00;
 
   &:hover {
-    background-color: #fff;
-    color: #ff8c00;
+    color: #fff;
+    background-color: #ff8c00;
   }
 `;
 
