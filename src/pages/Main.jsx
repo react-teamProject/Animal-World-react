@@ -44,6 +44,7 @@ const DetailLink = styled(Link)`
 const MainBox = styled.div`
   max-width: 1200px;
   margin: auto;
+  padding: 20px;
 `;
 
 const WriteButton = styled.button`
@@ -54,8 +55,8 @@ const WriteButton = styled.button`
   background-color: #ff8c00;
 
   &:hover {
-    background-color: #fff;
-    color: #ff8c00;
+    color: #fff;
+    background-color: #ff8c00;
   }
 `;
 
