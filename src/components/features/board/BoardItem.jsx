@@ -35,16 +35,16 @@ const DetailLink = styled(Link)`
 
 const Box = styled.div`
   position: relative;
-  width: 30rem;
-  height: 30rem;
-  margin: 4rem;
+  width: 300px;
+  height: 300px;
+  margin: 30px;
 
   &:hover {
     .imgBox {
-      transform: translate(-3.5rem, -3.5rem);
+      transform: translate(-56px, -56px);
     }
     .content {
-      transform: translate(3.5rem, 3.5rem);
+      transform: translate(56px, 56px);
     }
   }
 
@@ -59,8 +59,8 @@ const Box = styled.div`
   }
 
   .imgBox img {
-    width: 35rem;
-    height: 34rem;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     resize: both;
     border-radius: 16px;
@@ -72,7 +72,7 @@ const Box = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 1.5rem;
+    padding: 10px;
     display: flex;
     justify-content: center;
     background-color: #fff;
@@ -80,21 +80,20 @@ const Box = styled.div`
     align-items: flex-end;
     text-align: center;
     transition: 0.5s ease-in-out;
-    border-radius: 16px;
   }
 
   .content h3 {
     display: block;
-    font-size: 2rem;
+    font-size: 20px;
     color: #111;
     font-weight: 500;
-    line-height: 2rem;
+    line-height: 32px;
     letter-spacing: 1px;
   }
 
   .content span {
     color: #555;
-    font-size: 1.4rem;
+    font-size: 22px;
     font-weight: 300;
     letter-spacing: 2px;
   }
