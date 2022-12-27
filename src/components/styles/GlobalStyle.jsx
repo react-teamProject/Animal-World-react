@@ -6,10 +6,8 @@ const GlobalStyle = createGlobalStyle`
       display: flex;
       justify-content: center;
       align-items: center;
-      //flex-direction: column;
       margin: 0 auto;
       text-align: center;
-      border: 1px solid black;
   /* background-color: #d3d3d3;
   
   background-image: linear-gradient(#ffffff 1px, transparent 1px),

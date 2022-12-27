@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const MainLayout = ({ children }) => {
   return (
@@ -21,8 +22,12 @@ const MainLayout = ({ children }) => {
           </div>
         </RightBox>
         <MenuWrapper>
-          <Menu>홈</Menu>
-          <Menu>글쓰기</Menu>
+          <Menu>
+            <LinkBtn to={`/`}>홈</LinkBtn>
+          </Menu>
+          <Menu>
+            <LinkBtn to={`/boardwrite`}>글쓰기</LinkBtn>
+          </Menu>
         </MenuWrapper>
       </MainWrapper>
     </>
@@ -155,4 +160,9 @@ const RightBox = styled.div`
     border-radius: 16px;
   }
 `;
+
+const LinkBtn = styled(Link)`
+  text-decoration: none;
+`;
+
 export default MainLayout;
