@@ -2,7 +2,7 @@
 // Header, Footer는 고정이기 때문에 Layout에 추가
 import Header from "./Header";
 import Footer from "./Footer";
-import MainLayout from "./MainLayout";
+// import MainLayout from "./MainLayout";
 import GlobalStyle from "../styles/GlobalStyle";
 
 const Layout = ({ children }) => {
@@ -10,8 +10,8 @@ const Layout = ({ children }) => {
     <div>
       <GlobalStyle />
       <Header />
-      {/* {children} */}
-      <MainLayout />
+      {children}
+      {/* <MainLayout /> */}
       <Footer />
     </div>
   );

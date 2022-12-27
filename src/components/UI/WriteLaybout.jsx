@@ -1,28 +1,39 @@
 import React from "react";
 import styled from "styled-components";
+import BoardInput from "../features/board/BoardInput";
+import { Link, useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
+  const navigator = useNavigate();
   return (
     <>
       <MainWrapper>
         <LeftBox>
           <div className="left-dot-box">
-            <div className="side-content">
-              <Logo src="/assets/animal_world_logo.png" />
-            </div>
+            <div className="side-content"></div>
           </div>
         </LeftBox>
         <RightBox>
           <div className="right-dot-box">
-            <div className="address">
+            <div className="title">
               <div>https://www.animalworld.com/88</div>
             </div>
-            <div className="main-content"></div>
+            <div className="main-content">
+              <BoardInput />
+            </div>
           </div>
         </RightBox>
         <MenuWrapper>
-          <Menu>홈</Menu>
-          <Menu>글쓰기</Menu>
+          <Menu>
+            <button
+              className="menu"
+              onClick={() => {
+                navigator("/");
+              }}
+            >
+              홈
+            </button>
+          </Menu>
         </MenuWrapper>
       </MainWrapper>
     </>
@@ -32,7 +43,6 @@ const MenuWrapper = styled.div`
   display: flex;
   position: relative;
   right: 74px;
-  top: -100px;
   flex-direction: column;
 `;
 const Menu = styled.button`
@@ -42,11 +52,17 @@ const Menu = styled.button`
   border: none;
   background-color: #f0f8ff;
   flex-direction: column;
-  border-radius: 0 8px 8px 0%;
+  border-radius: 0 8px 8px 0;
   width: 80px;
   height: 50px;
   margin: 10px;
-  box-shadow: 8px 26px 17px hsl(0deg 54% 80% / 14%); ;
+  .menu {
+    border-radius: 0 8px 8px 0;
+    background-color: #f1f8fe;
+    border: 1px solid #f1f8fe;
+    width: 80px;
+    height: 50px;
+  }
 `;
 const MainWrapper = styled.section`
   display: flex;
@@ -64,13 +80,12 @@ const LeftBox = styled.div`
   background-color: #ff8c00;
   border-radius: 16px;
   border-right: none;
-  box-shadow: 4px 8px 4px hsl(0deg 0% 0% / 38%);
-
   .left-dot-box {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     position: relative;
+
     width: 250px;
     height: 550px;
     border: 3px dashed #f0f8ff;
@@ -78,36 +93,14 @@ const LeftBox = styled.div`
     border-right: none;
   }
   .side-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     width: 230px;
     height: 500px;
     background-color: #f0f8ff;
     border-radius: 16px;
     margin-bottom: 10px;
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    p {
-      margin: 5px;
-    }
-    input {
-      border: 1px solid #ff8c00;
-      border-radius: 16px;
-      background-color: #f0f8ff;
-    }
   }
 `;
 
-const Logo = styled.img`
-  margin: 50px;
-  width: 250px;
-  height: 250px;
-`;
 const RightBox = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -118,7 +111,6 @@ const RightBox = styled.div`
   border: 1px solid #f0f8ff;
   border-radius: 16px;
   border-left: none;
-  box-shadow: 4px 8px 4px hsl(0deg 0% 0%/0.38);
   .right-dot-box {
     display: flex;
     flex-direction: column;
@@ -127,26 +119,32 @@ const RightBox = styled.div`
     position: relative;
     width: 640px;
     height: 550px;
-    /* right: 12px; */
     border: 3px dashed #f0f8ff;
     border-radius: 16px;
     border-left: none;
   }
-  .address {
+  .title {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 600px;
-    height: 36px;
-    padding: 4px;
-    font-size: 12px;
+    align-items: center;
+    padding: 10px;
   }
   .main-content {
+    gap: 10px;
     width: 620px;
     height: 500px;
     background-color: #f0f8ff;
     border-radius: 16px;
     margin-bottom: 10px;
+  }
+  .rightTag {
+    transform: translate(0, -30px);
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    border-radius: 16px;
   }
 `;
 export default MainLayout;
