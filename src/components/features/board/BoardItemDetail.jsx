@@ -188,8 +188,6 @@ const BoardItemDetail = () => {
   );
 };
 
-export default BoardItemDetail;
-
 const ImgTag = styled.img`
   width: 270px;
   height: 260px;
@@ -254,3 +252,4 @@ const StTime = styled.div`
   color: grey;
   font-size: 12px;
 `;
+export default BoardItemDetail;
