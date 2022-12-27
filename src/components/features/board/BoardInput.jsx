@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { storage } from "../../../firebase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import styled from "styled-components";
-// import profile from "../../styles/GlobalStyle/";
 
 const BoardInput = () => {
   const [title, setTitle] = useState("");
@@ -118,7 +117,7 @@ const BoardInput = () => {
     };
   };
 
-  function onChangeHandler(event) {}
+  // function onChangeHandler(event) {}
 
   return (
     <div>
@@ -155,7 +154,7 @@ const BoardInput = () => {
               width: "80%",
               height: "180px",
               margin: "10px",
-              border: "2px solid orange",
+              border: "2px solid #ff8c00",
               "border-radius": "16px",
             }}
           />
@@ -163,48 +162,73 @@ const BoardInput = () => {
         <div id="imgUrl"></div>
         <div
           style={{
-            transform: "translate(-210px, -150px)",
+            transform: "translate(-210px, -200px)",
             width: "100px",
-            position: "absolute",
-            top: "410px",
-            "text-align": "center",
+            padding: "20px",
+            display: "flex",
+            "flex-direction": "column",
+            "align-items": "center",
+            "justfy-content": "center",
           }}
         >
-          <div style={{ transform: "translate(25px)" }}>
-            <p>자랑해주세요</p>
-            <p>당신의 소중한</p>
+          <div>
+            <SideContentWrapper>
+              <p>나만 볼 수 없어</p>
+              <p> 소중한</p>
+            </SideContentWrapper>
+            <input
+              type="text/"
+              style={{
+                "border-radius": "10px",
+                border: "1px solid #ff8c00",
+                width: "100px",
+              }}
+              value={test}
+              disabled
+            />
           </div>
-          <input type="text/" value={test} disabled />
         </div>
         <ButtonBox>
           <input type="file" onChange={onFileChange} className="inputFile" />
           <button className="submitButton">글 등록하기</button>
         </ButtonBox>
-        {/* <ImgBox src={profile} id="boardImg" alt="boardImg" /> */}
+        <ImgBox
+          src="/assets/animal_world_logo.png"
+          id="boardImg"
+          alt="boardImg"
+        />
       </form>
     </div>
   );
 };
 
 export default BoardInput;
+const SideContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+`;
 const ImgBox = styled.img`
-  transform: translate(-220px, -480px);
-  width: 170px;
-  height: 170px;
+  transform: translate(-310px, -629px);
+  margin: 50px;
+  width: 250px;
+  height: 250px;
 `;
 
 const InputBox = styled.input`
   padding: 5px;
-  border-radius: 20px;
-  border: 2px solid orange;
+  border-radius: 16px;
+  border: 2px solid #ff8c00;
   width: 80%;
   margin: 10px;
   height: 25px;
 `;
 
 const ButtonBox = styled.button`
-  transform: translate(95px, -60px);
+  transform: translate(95px, -150px);
   width: 430px;
   background-color: #f1f8fe;
   border: 1px solid #f1f8fe;

@@ -108,8 +108,7 @@ const BoardItemDetail = () => {
               </StContent>
               <StContent
                 height="170px"
-                style={{ display: showEdit ? "block" : "none" }}
-              >
+                style={{ display: showEdit ? "block" : "none" }}>
                 {item.content}
               </StContent>
 
@@ -117,8 +116,7 @@ const BoardItemDetail = () => {
                 <div
                   style={{
                     display: showDelete && showEdit ? "block" : "none",
-                  }}
-                >
+                  }}>
                   <DetailButton width="50px" onClick={toggleDeleteInput}>
                     삭제
                   </DetailButton>
@@ -158,8 +156,7 @@ const BoardItemDetail = () => {
                   <DetailButton
                     onClick={(e) => {
                       onEditHandler(e);
-                    }}
-                  >
+                    }}>
                     수정 완료
                   </DetailButton>
 
@@ -190,8 +187,6 @@ const BoardItemDetail = () => {
     </>
   );
 };
-
-export default BoardItemDetail;
 
 const ImgTag = styled.img`
   width: 270px;
@@ -257,3 +252,4 @@ const StTime = styled.div`
   color: grey;
   font-size: 12px;
 `;
+export default BoardItemDetail;
