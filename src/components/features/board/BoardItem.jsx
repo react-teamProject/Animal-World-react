@@ -20,7 +20,7 @@ const BoardItem = ({ board }) => {
           <img src={board.ImgUrl} alt="boardImg" />
         </div>
         <div className="content">
-          <h3>{board.title}</h3>
+          <h3 style={{ "font-size": "25px" }}>{board.title}</h3>
         </div>
       </DetailLink>
     </Box>

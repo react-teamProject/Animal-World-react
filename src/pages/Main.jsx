@@ -20,7 +20,8 @@ const Main = () => {
   //enter (keycode 13)로 검색 가능
   const handleOnKeyUp = (event) => {
     if (event.keyCode === 13) {
-      navigate(`/?q=${search}`);
+      //
+      handleOnClickSearchButton();
     }
   };
   const handleOnClickSearchButton = (event) => {
@@ -42,7 +43,9 @@ const Main = () => {
               type="text"
               placeholder="검색어를 입력해주세요"
             />
-            <SearchBtn type="submit"><FaSearch /> 검색</SearchBtn>
+            <SearchBtn type="submit">
+              <FaSearch /> 검색
+            </SearchBtn>
           </form>
           <DetailLink to={`/boardwrite`}>
             <WriteButton>글쓰기</WriteButton>
