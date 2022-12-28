@@ -1,62 +1,59 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import BoardList from "../components/features/board/BoardList";
 import Layout from "../components/UI/Layout";
 import { __getBoards } from "../redux/modules/boardSlice";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-// Main page 에 필요한 요소 import
-// ex) boardList (게시글 전체 list)
-// header & footer => Layout에 존재하기 때문에 자동 포함
+import { Link, useNavigate } from "react-router-dom";
+import SimpleSlider from "../components/features/board/SimpleSlider";
+import { FaSearch } from "react-icons/fa";
 
 const Main = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(__getBoards());
   }, [dispatch]);
 
+  //enter (keycode 13)로 검색 가능
+  const handleOnKeyUp = (event) => {
+    if (event.keyCode === 13) {
+      //
+      handleOnClickSearchButton();
+    }
+  };
+  const handleOnClickSearchButton = (event) => {
+    event.preventDefault();
+    navigate(`/?q=${search}`);
+    setSearch("");
+  };
   return (
     <Layout>
-      <DetailLink to={`/boardwrite`}>글쓰기</DetailLink>
-      <h2>최근 작성한 게시물</h2>
-      <BoardList />
+      <MainBox>
+        <SimpleSlider />
+        <Search>
+          <form onSubmit={handleOnClickSearchButton}>
+            <input
+              onKeyUp={handleOnKeyUp}
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              className="input"
+              type="text"
+              placeholder="검색어를 입력해주세요"
+            />
+            <SearchBtn type="submit">
+              <FaSearch /> 검색
+            </SearchBtn>
+          </form>
+          <DetailLink to={`/boardwrite`}>
+            <WriteButton>글쓰기</WriteButton>
+          </DetailLink>
+        </Search>
+      </MainBox>
 
-      {/* <Container>
-        <Box>
-          <div className="imgBox">
-            <img
-              src="https://i.pinimg.com/originals/a4/7b/a5/a47ba59b4a353e0928ef0551ca44f980.jpg"
-              alt=""
-            />
-          </div>
-          <div className="content">
-            <h2>Karan Singh</h2>
-          </div>
-        </Box>
-        <Box>
-          <div className="imgBox">
-            <img
-              src="https://i.pinimg.com/originals/a4/7b/a5/a47ba59b4a353e0928ef0551ca44f980.jpg"
-              alt=""
-            />
-          </div>
-          <div className="content">
-            <h2>Dolly Seth</h2>
-          </div>
-        </Box>
-        <Box>
-          <div className="imgBox">
-            <img
-              src="https://i.pinimg.com/originals/a4/7b/a5/a47ba59b4a353e0928ef0551ca44f980.jpg"
-              alt=""
-            />
-          </div>
-          <div className="content">
-            <h2>Aakash Agrawal</h2>
-          </div>
-        </Box>
-      </Container> */}
+      <BoardList />
     </Layout>
   );
 };
@@ -67,77 +64,73 @@ const DetailLink = styled(Link)`
   text-decoration: none;
 `;
 
-// const Container = styled.div`
-//   position: relative;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-wrap: wrap;
-// `;
+const MainBox = styled.div`
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+`;
 
-// const Box = styled.div`
-//   position: relative;
-//   width: 30rem;
-//   height: 30rem;
-//   margin: 4rem;
+const WriteButton = styled.button`
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ff8c00;
 
-//   &:hover {
-//     .imgBox {
-//       transform: translate(-3.5rem, -3.5rem);
-//     }
-//     .content {
-//       transform: translate(3.5rem, 3.5rem);
-//     }
-//   }
+  &:hover {
+    color: #fff;
+    background-color: #ff8c00;
+  }
+`;
 
-//   .imgBox {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     z-index: 2;
-//     transition: all 0.5s ease-in-out;
-//   }
+const Search = styled.div`
+  padding-top: 64px;
+  display: flex;
+  justify-content: space-between;
 
-//   .imgBox img {
-//     width: 30rem;
-//     height: 30rem;
-//     object-fit: cover;
-//     resize: both;
-//   }
+  .input {
+    width: 400px;
+    padding: 12px 24px;
 
-//   .content {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     padding: 1.5rem;
-//     display: flex;
-//     justify-content: center;
-//     background-color: #fff;
-//     z-index: 1;
-//     align-items: flex-end;
-//     text-align: center;
-//     transition: 0.5s ease-in-out;
-//   }
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
 
-//   .content h2 {
-//     display: block;
-//     font-size: 2rem;
-//     color: #111;
-//     font-weight: 500;
-//     line-height: 2rem;
-//     letter-spacing: 1px;
-//   }
+    color: #575756;
+    background-color: transparent;
 
-//   @media (max-width: 600px) {
-//     .container .box:hover .content {
-//       transform: translate(0, 3.5rem);
-//     }
-//     .container .box:hover .imgBox {
-//       transform: translate(0, -3.5rem);
-//     }
-//   }
-// `;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+
+    &::placeholder {
+      color: color(#575756 a(0.8));
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    &:hover,
+    &:focus {
+      padding: 12px 0;
+      outline: 0;
+      border: 1px solid transparent;
+      border-bottom: 1px solid #575756;
+      border-radius: 0;
+      background-position: 100% center;
+    }
+  }
+`;
+
+const SearchBtn = styled.button`
+  margin: 10px;
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+`;

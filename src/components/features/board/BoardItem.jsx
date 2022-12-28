@@ -15,17 +15,12 @@ const BoardItem = ({ board }) => {
 
   return (
     <Box>
-      {/* <h3>{board.title}</h3>
-        <p>{board.user}</p>
-        <p>{board.content}</p>
-        <img src={board.ImgUrl} alt="boardImg" />
-        <p>{board.date}</p> */}
       <DetailLink to={`/${board.id}`} key={board.id}>
         <div className="imgBox">
           <img src={board.ImgUrl} alt="boardImg" />
         </div>
         <div className="content">
-          <h3>{board.title}</h3>
+          <h3 style={{ "font-size": "25px" }}>{board.title}</h3>
         </div>
       </DetailLink>
     </Box>
@@ -38,23 +33,18 @@ const DetailLink = styled(Link)`
   text-decoration: none;
 `;
 
-// const ImgTag = styled.img`
-//   width: 100px;
-//   height: 100px;
-// `;
-
 const Box = styled.div`
   position: relative;
-  width: 30rem;
-  height: 30rem;
-  margin: 4rem;
+  width: 300px;
+  height: 300px;
+  margin: 30px;
 
   &:hover {
     .imgBox {
-      transform: translate(-3.5rem, -3.5rem);
+      transform: translate(-56px, -56px);
     }
     .content {
-      transform: translate(3.5rem, 3.5rem);
+      transform: translate(56px, 56px);
     }
   }
 
@@ -69,8 +59,8 @@ const Box = styled.div`
   }
 
   .imgBox img {
-    width: 30rem;
-    height: 30rem;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     resize: both;
     border-radius: 16px;
@@ -82,7 +72,7 @@ const Box = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 1.5rem;
+    padding: 10px;
     display: flex;
     justify-content: center;
     background-color: #fff;
@@ -94,16 +84,16 @@ const Box = styled.div`
 
   .content h3 {
     display: block;
-    font-size: 2rem;
+    font-size: 20px;
     color: #111;
     font-weight: 500;
-    line-height: 2rem;
+    line-height: 32px;
     letter-spacing: 1px;
   }
 
   .content span {
     color: #555;
-    font-size: 1.4rem;
+    font-size: 22px;
     font-weight: 300;
     letter-spacing: 2px;
   }
