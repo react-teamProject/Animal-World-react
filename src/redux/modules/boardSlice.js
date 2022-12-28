@@ -38,7 +38,7 @@ export const __postBoards = createAsyncThunk(
   "board/postBoards",
   async (payload, thunkApi) => {
     try {
-      const data = await axios.post("http://localhost:3003/board", payload);
+      const data = await axios.post("http://localhost:3001/board", payload);
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

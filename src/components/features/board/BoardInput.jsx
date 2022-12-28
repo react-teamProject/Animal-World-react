@@ -340,7 +340,6 @@ export default BoardInput;
 const SideContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
   align-items: center;
   padding: 0px;
   margin: 0px;
@@ -350,6 +349,8 @@ const ImgBox = styled.img`
   margin: 50px;
   width: 250px;
   height: 250px;
+  max-width: 200px;
+  max-height: 200px;
 `;
 
 const InputBox = styled.input`
