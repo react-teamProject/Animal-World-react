@@ -8,6 +8,7 @@ import CommentList from "../components/features/comment/CommentList";
 import { useEffect } from "react";
 import { __getComments } from "../redux/modules/commentSlice";
 import BoardItemDetail from "../components/features/board/BoardItemDetail";
+import MainLayout from "../components/UI/MainLayout";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -22,9 +23,11 @@ const Detail = () => {
   //해당 게시물의 댓글만 불러오도록 filter 하고나서 map
   return (
     <Layout>
-      <BoardItemDetail />
-      <CommentInput param={param} />
-      <CommentList param={param} />
+      <MainLayout>
+        <BoardItemDetail />
+        <CommentInput param={param} />
+        <CommentList param={param} />
+      </MainLayout>
     </Layout>
   );
 };

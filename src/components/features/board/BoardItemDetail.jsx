@@ -100,8 +100,20 @@ const BoardItemDetail = () => {
       {a.map((item) => {
         return (
           <StBoardContainer key={item.id}>
+            <LeftSection>
+              <ImgBox src="/assets/animal_world_logo.png" alt="boardImg" />
+              <h3>{item.user}</h3>
+            </LeftSection>
+
             <StLeftWrapper>
-              <ImgTag src={item.ImgUrl} alt="boardImg" />
+              <ImgTag
+                src={
+                  item.ImgUrl === item.ImgUrl
+                    ? item.ImgUrl
+                    : "/assets/animal_world_logo.png"
+                }
+                alt="boardImg"
+              />
               <StTime>시간 들어갈 자리</StTime>
             </StLeftWrapper>
             <StRightWrapper>
@@ -247,14 +259,28 @@ const StEditContentTextArea = styled.textarea`
 `;
 const StLeftWrapper = styled.div`
   /* background-color: pink; */
+  position: relative;
+  right: 240px;
 `;
 
 const StRightWrapper = styled.div`
   /* background-color: purple; */
+  position: relative;
+  right: 240px;
 `;
 
 const StTime = styled.div`
   color: grey;
   font-size: 12px;
+`;
+
+const LeftSection = styled.div`
+  position: relative;
+  position: relative;
+  right: 270px;
+`;
+const ImgBox = styled.img`
+  width: 230px;
+  height: 230px;
 `;
 export default BoardItemDetail;

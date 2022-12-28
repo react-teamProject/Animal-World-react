@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 import CommentItem from "./CommentItem";
 
 const CommentList = ({ param }) => {
@@ -16,7 +17,7 @@ const CommentList = ({ param }) => {
   }
   return (
     <div>
-      <div>
+      <CommentListDiv>
         {comment
           .filter((item) => item.boardId === param)
           .map((item) => {
@@ -24,9 +25,16 @@ const CommentList = ({ param }) => {
           })
           .sort((a, b) => a.time - b.time)
           .reverse()}
-      </div>
+      </CommentListDiv>
     </div>
   );
 };
+
+const CommentListDiv = styled.div`
+  width: 620px;
+  height: 100px;
+  overflow: auto;
+  padding-left: 38px;
+`;
 
 export default CommentList;
