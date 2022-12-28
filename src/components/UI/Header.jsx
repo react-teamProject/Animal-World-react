@@ -1,10 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import LogoImg from "../styles/Logo.png";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <StHeader>
-      <h2>Animal World</h2>
+      <HomeLink
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <LogoImgBox src={LogoImg} alt="logo" />
+      </HomeLink>
     </StHeader>
   );
 };
@@ -15,4 +25,16 @@ export default Header;
 const StHeader = styled.div`
   font-size: 30px;
   color: blue;
+`;
+
+const HomeLink = styled.div`
+  text-decoration: none;
+`;
+
+const LogoImgBox = styled.img`
+  /* position: relative;
+  left: 300px; */
+  /* display: flex;
+  text-align: center;
+  justify-content: center; */
 `;
