@@ -36,6 +36,7 @@ const BoardInput = () => {
   const boardTitleInput = useRef();
   const boardContentInput = useRef();
   const PWInput = useRef();
+  const imgInput = useRef();
 
   // title change
   const onTitleChange = async (e) => {
@@ -63,7 +64,51 @@ const BoardInput = () => {
     e.preventDefault();
 
     // 입력칸 공백 방지
-    if (!user && !pw && !title && !content) {
+    if (!user && !pw && !title && !content && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw & !title && !content) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw && !title && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw && !content && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !title && !content && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!pw && !title && !content && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !pw && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !title && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!pw && !title && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!user && !content && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!pw && !content && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!title && !content && !fireCheck) {
       toast.warning("빈칸을 모두 입력해주세요!");
       usernameInput.current.focus();
       return;
@@ -103,6 +148,22 @@ const BoardInput = () => {
       toast.warning("빈칸을 모두 입력해주세요!");
       usernameInput.current.focus();
       return;
+    } else if (!user && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!pw && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!title && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
+    } else if (!content && !fireCheck) {
+      toast.warning("빈칸을 모두 입력해주세요!");
+      usernameInput.current.focus();
+      return;
     } else if (!user && !pw) {
       toast.warning("반려동물 이름과 비밀번호를 입력해주세요!");
       usernameInput.current.focus();
@@ -122,6 +183,9 @@ const BoardInput = () => {
     } else if (!user) {
       toast.warning("반려동물 이름을 입력해주세요!");
       usernameInput.current.focus();
+      return;
+    } else if (!fireCheck) {
+      toast.warning("반려동물 사진을 선택해주세요!");
       return;
     }
 
@@ -254,7 +318,12 @@ const BoardInput = () => {
           </div>
         </div>
         <ButtonBox>
-          <input type="file" onChange={onFileChange} className="inputFile" />
+          <input
+            type="file"
+            onChange={onFileChange}
+            className="inputFile"
+            ref={imgInput}
+          />
           <button className="submitButton">글 등록하기</button>
         </ButtonBox>
         <ImgBox
