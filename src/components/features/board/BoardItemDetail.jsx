@@ -21,7 +21,7 @@ const BoardItemDetail = () => {
   // 비밀번호 일치 시 삭제
   const a = board.filter((item) => item.id === param).map((item) => item);
   const [pwTest, setPWTest] = useState("");
-  const { pw, title, content } = a[0];
+  const { pw, title, content, date } = a[0];
 
   //처음 수정, 삭제에 들어가면 원래 들어있던 불러오게 함
   const [state, setState] = useState({
@@ -114,7 +114,7 @@ const BoardItemDetail = () => {
                 }
                 alt="boardImg"
               />
-              <StTime>시간 들어갈 자리</StTime>
+              <StTime>{item.date}</StTime>
             </StLeftWrapper>
             <StRightWrapper>
               <StContent style={{ display: showEdit ? "block" : "none" }}>
