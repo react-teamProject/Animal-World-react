@@ -10,7 +10,8 @@
 <br>
 
 ## 완성된 페이지
-![1](https://user-images.githubusercontent.com/95006849/209776183-69a5ce1a-6ecc-44a4-8ca3-741d20b24e7f.png)
+[애니멀 월드 바로가기](https://react-teamproject-gamma.vercel.app/)
+![화면 캡처 2023-01-04 214232](https://user-images.githubusercontent.com/95006849/210557520-5eec202d-6f36-4af5-b832-a9a4b9ff33a1.png)
 <br>
 <br>
 
