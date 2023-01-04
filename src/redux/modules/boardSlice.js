@@ -24,7 +24,7 @@ export const __getBoards = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const data = await axios.get(
-        "http://localhost:3001/board?_sort=time&_order=asc"
+        `${process.env.REACT_APP_API}/board?_sort=time&_order=asc`
       );
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
@@ -38,7 +38,10 @@ export const __postBoards = createAsyncThunk(
   "board/postBoards",
   async (payload, thunkApi) => {
     try {
-      const data = await axios.post("http://localhost:3001/board", payload);
+      const data = await axios.post(
+        `${process.env.REACT_APP_API}/board`,
+        payload
+      );
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -51,7 +54,10 @@ export const __deleteBoards = createAsyncThunk(
   "board/deteteBoards",
   async (payload, thunkApi) => {
     try {
-      await axios.delete(`http://localhost:3001/board/${payload}`, payload);
+      await axios.delete(
+        `${process.env.REACT_APP_API}/board/${payload}`,
+        payload
+      );
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -64,7 +70,10 @@ export const __editBoards = createAsyncThunk(
   "board/editBoards",
   async (payload, thunkApi) => {
     try {
-      await axios.patch(`http://localhost:3001/board/${payload.id}`, payload);
+      await axios.patch(
+        `${process.env.REACT_APP_API}/board/${payload.id}`,
+        payload
+      );
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

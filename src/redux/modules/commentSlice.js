@@ -14,7 +14,7 @@ export const __getComments = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const data = await axios.get(
-        "http://localhost:3001/comment?_sort=time&_order=asc"
+        `${process.env.REACT_APP_API}/comment?_sort=time&_order=asc`
       );
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
@@ -28,7 +28,10 @@ export const __postComment = createAsyncThunk(
   "comment/postComment",
   async (payload, thunkApi) => {
     try {
-      const data = await axios.post("http://localhost:3001/comment", payload);
+      const data = await axios.post(
+        `${process.env.REACT_APP_API}/comment`,
+        payload
+      );
       return thunkApi.fulfillWithValue(data.data);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -41,7 +44,7 @@ export const __deleteComment = createAsyncThunk(
   "comment/deleteComment",
   async (payload, thunkApi) => {
     try {
-      await axios.delete(`http://localhost:3003/comment/${payload}`);
+      await axios.delete(`${process.env.REACT_APP_API}/comment/${payload}`);
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -53,7 +56,10 @@ export const __editComment = createAsyncThunk(
   "comment/editComment",
   async (payload, thunkApi) => {
     try {
-      await axios.patch(`http://localhost:3003/comment/${payload.id}`, payload);
+      await axios.patch(
+        `${process.env.REACT_APP_API}/comment/${payload.id}`,
+        payload
+      );
       return thunkApi.fulfillWithValue(payload);
     } catch (error) {
       return thunkApi.rejectWithValue(error);
